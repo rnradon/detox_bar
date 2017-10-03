@@ -1,0 +1,29 @@
+{
+  "name": "machine",
+  "base": "user",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "gymUser": {
+      "type": "hasMany",
+      "model": "gym_user",
+      "foreignKey": ""
+    },
+    "bottles": {
+      "type": "hasMany",
+      "model": "bottle",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

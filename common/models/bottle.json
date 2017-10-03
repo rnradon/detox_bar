@@ -1,0 +1,29 @@
+{
+  "name": "bottle",
+  "plural": "bottles",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ingredient_name": {
+      "type": "string",
+      "required": true
+    },
+    "quantity": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "machine": {
+      "type": "belongsTo",
+      "model": "machine",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

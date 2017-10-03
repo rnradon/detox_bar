@@ -1,0 +1,50 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ]
+  },
+  "User": {
+    "dataSource": "gym_app",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "gym_app",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "gym_app",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "gym_app",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "gym_app",
+    "public": false
+  },
+  "gym_user": {
+    "dataSource": "gym_app",
+    "public": true
+  },
+  "machine": {
+    "dataSource": "gym_app",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "emailDs"
+  },
+  "user": {
+    "dataSource": "gym_app",
+    "public": true,
+    "options": {}
+  },
+  "bottle": {
+    "dataSource": "gym_app",
+    "public": true
+  }
+}

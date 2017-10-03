@@ -1,0 +1,74 @@
+{
+  "name": "gym_user",
+  "base": "user",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "registration_number": {
+      "type": "number",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "phone_number": {
+      "type": "number",
+      "required": true
+    },
+    "date_of_birth": {
+      "type": "date"
+    },
+    "age": {
+      "type": "number",
+      "required": false
+    },
+    "sex": {
+      "type": "string",
+      "required": false
+    },
+    "height": {
+      "type": "number",
+      "required": false
+    },
+    "flag": {
+      "type": "Boolean",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "machine": {
+      "type": "belongsTo",
+      "model": "machine",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
