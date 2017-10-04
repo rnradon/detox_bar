@@ -1,9 +1,9 @@
 {
   "gym_app_db": {
-    "name": "gym_app",
+    "name": "gym_app_db",
     "connector": "memory"
   },
-    "gym_app":{
+  "gym_app": {
     "host": "ds147544.mlab.com",
     "port": 47544,
     "url": "mongodb://gym_app:12345@ds147544.mlab.com:47544/gym_app",
@@ -12,7 +12,7 @@
     "name": "gym_app",
     "user": "gym_app",
     "connector": "mongodb"
-},
+  },
   "emailDs": {
     "name": "emailDs",
     "connector": "mail",

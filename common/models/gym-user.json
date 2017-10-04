@@ -21,6 +21,10 @@
     "phone_number": {
       "type": "number",
       "required": true
+    },
+    "cart_value": {
+      "type": "number",
+      "required": false
     }
   },
   "validations": [],
