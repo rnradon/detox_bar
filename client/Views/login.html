@@ -27,7 +27,7 @@
     <h3 class="text-center"> Log In </h3>
     <h4>Good to have you back !</h4>
 
-    <form id = "myForm" action="/api/Users/login" method="post" target="dummyframe">
+    <form id = "myForm" action="/api/users/login" method="post" target="dummyframe">
     <fieldset>
       <input placeholder="Username" type="text" tabindex="1" required autofocus name="username" style="width: 100%; padding-left: 10px;">
     </fieldset>
@@ -44,7 +44,7 @@
 
       $('#myForm')
       .ajaxForm({
-        url : '/api/Users/login', // or whatever
+        url : '/api/users/login', // or whatever
         dataType : 'json',
         type: "POST",
         success : function (response) {
@@ -53,7 +53,7 @@
             $('#success').delay(4000).fadeOut(300);
             console.log(response.id)
             // window.location.replace('/view_gym_users?access_token=' + response.id);
-             setTimeout(function() { window.location.replace('/view_gym_users?access_token=' + response.id); }, 1500)
+             setTimeout(function() { window.location.replace('/view_machines?access_token=' + response.id); }, 1500)
             
         },
         error: function (response) {

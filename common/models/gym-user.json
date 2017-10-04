@@ -21,25 +21,6 @@
     "phone_number": {
       "type": "number",
       "required": true
-    },
-    "date_of_birth": {
-      "type": "date"
-    },
-    "age": {
-      "type": "number",
-      "required": false
-    },
-    "sex": {
-      "type": "string",
-      "required": false
-    },
-    "height": {
-      "type": "number",
-      "required": false
-    },
-    "flag": {
-      "type": "Boolean",
-      "required": false
     }
   },
   "validations": [],
