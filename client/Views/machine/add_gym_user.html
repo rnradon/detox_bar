@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="res/css/register_user/base.css"/>
 
-<script>
+<!-- <script>
   $(window).ready(function(){  
   var access_token = window.location.search.substring(1);
   $.ajax({ url: '/api/gym_users?' + access_token ,
@@ -19,10 +19,10 @@
           cache: false,
         });
   });
-</script>
-
+</script> -->
+<div ng-controller="add_gym_user_controller">
 <div id="">
-<div ng-include src="'Views/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+<div ng-include src="'Views/machine/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 <div class="container"> 
 <div class="row">
 <div class="col-md-3 col-sm-0 col-xs-0"></div>
@@ -51,9 +51,7 @@
 
     <script>
         $("#back_to_admin_landing_page").click(function back_to_admin_landing_page(){
-          var access_token = window.location.search.substring(1);
-          var url = '/view_gym_users?' + access_token
-          window.location.href = url
+          
         });
     </script>
     <a href="" id="back_to_admin_landing_page"><button name="submit" type="submit" id="contact-submit" style="background-color: #4c96af; margin-bottom: 3%">Back</button></a>
@@ -92,21 +90,38 @@
       </div>
     </fieldset>
     <fieldset>
-      <input tabindex="8" required name="flag" value = "false" style="display: none;">
+      <input tabindex="8" required name="cart_value" type = "number">
+    </fieldset>
+    
+    <fieldset>
+      <input tabindex="8" name="machine_id" value = {{users_json_data.id}} type = "text" style="display: none;">
     </fieldset>
     
       <button name="submit" type="submit" id="contact-submit">Submit</button>
       <script>
-
+        var unsorted_url = window.location.pathname.split('id=');
+          unsorted_url = unsorted_url[1].split('/access_token=');
+          console.log(unsorted_url)
+          var access_token = unsorted_url[1]
+          // access_token = 'access_token=' + access_token
+          var machine_id = unsorted_url[0]
+          console.log("access_token " + access_token)
+          alert(access_token)
+          alert(machine_id)
+          var url = '/api/machines/' + machine_id + '/gymUser?access_token=' + access_token
       $('#myForm')
       .ajaxForm({
-        url : '/api/gym_users', // or whatever
+        url : url, // or whatever
         dataType : 'html',
         success : function (response) {
             
+            alert("CHECK")
             alert("Credentials Submitted Successfully. You'll be redirected to the admin page now !")
-            var url = '/view_gym_users?' + access_token
-            window.location.href = url
+            alert("URL")
+            var reload_url = '/machine/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
+            alert(reload_url)
+            
+            window.location.href = reload_url
             // location.delay(2000).reload();
              // setTimeout(function() { window.location.reload(true); }, 1000)
         },

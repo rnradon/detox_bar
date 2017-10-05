@@ -36,6 +36,22 @@
             })
 
 
+            .when("/machine/add_gym_user/machine_id=:id/:access_token", {
+                templateUrl : "Views/machine/add_gym_user.html",
+
+                controller: 'add_gym_user_controller'
+               
+            })
+
+
+            .when("/machine/del_gym_user/machine_id=:id/:access_token", {
+                templateUrl : "Views/machine/del_gym_user.html",
+
+                
+               
+            })
+
+
             .when("/analytics_gym_user/user_found/gymUserId=:id/:access_token", {
                 templateUrl : "Views/analytics_chart_user.html",
                 
@@ -136,11 +152,13 @@
     }]);
     
 
-     app.controller('edit_user_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
+     app.controller('add_gym_user_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
         
         var id = $routeParams.id
         var access_token = $routeParams.access_token
-        $http.get('/api/gym_users/findOne?filter[where][id]=' + id + '&' + access_token)
+        var url = '/api/machines/' + id + '?' + access_token
+        alert(url)
+        $http.get(url)
         .then(function(response) {
         $scope.users_json_data = response.data;
         // $scope.reg_number = $routeParams.registration_number;
