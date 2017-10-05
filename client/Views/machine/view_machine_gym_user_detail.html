@@ -5,7 +5,7 @@
 <div ng-include src="'Views/machine/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
 <!-- <script>alert("HTML")</script> -->
-<div ng-controller="view_machine_gym_user_controller">
+<div ng-controller="view_machine_gym_user_detail_controller">
 
 <!-- <script>
   $(window).ready(function(){  
@@ -58,16 +58,13 @@
 
 
 
-
-      <div class = "col-md-12 col-xs-12 col-lg-12 col-sm-12" style= "padding:10px;">
-        <div class =  "help-block col-md-6" style="color: #0abb3b; font-weight: bold">You have {{count.count}} Registered Users. :) </div>
-      </div>
+     
 
       <div class = "col-xs-12 col-lg-12 col-sm-12 col-md-12" style="padding: 0px;">
 
         <div style="padding: 20px 0">
 
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" id="div1" ng-repeat="user in users_json_data" style="background-color: ; padding-top: 20px;">
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" id="div1" style="background-color: ; padding-top: 20px;">
           <script>
           
             var unsorted_url = window.location.pathname.split('/access_token=');
@@ -75,19 +72,19 @@
             access_token = unsorted_url[1]
             // 
           </script>
-          <a href="/machine/gym_user_detail/machine_id={{user.machineId}}/id={{user.id}}/access_token=" onclick = "location.href=this.href + access_token; return false;" class="anchor" style="text-decoration: none; color:#333">
+         
             <div class="categoryWrap" style = "display:flex; align-items:center; flex-direction:column;height:350px">
-              <h4><span class="label label-warning" style="margin-top: 5% "> &#x20b9; {{user.cart_value}}</span></h4>
+              <h4><span class="label label-warning" style="margin-top: 5% "> &#x20b9; {{users_json_data.cart_value}}</span></h4>
               <div style = "display:flex; align-items:center">
                 <img src = "res/img/flat-avatar.png" class="catImage text-center" style=" margin-top: 10%;width:80px; height:80px; border-radius: 50px;">
               </div>
               <div class="catContent" style = "align-items:center">
-                <h3 class="titleHeading" style = "text-align:center">{{user.name}}
+                <h3 class="titleHeading" style = "text-align:center">{{users_json_data.name}}
                 </h3>
-                <p class = "help-block" style = "text-align:center">{{user.username}}<br> {{user.address}}</p>
+                <p class = "help-block" style = "text-align:center">{{users_json_data.username}}<br> {{users_json_data.address}}</p>
                 <hr>
                 <div style="margin-bottom: 10px;">
-                  <p style = "text-align:center">{{user.phone_number}}<br>{{user.email}}
+                  <p style = "text-align:center">{{users_json_data.phone_number}}<br>{{users_json_data.email}}
                   </p>
                 
                 </div>

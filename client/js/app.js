@@ -45,9 +45,13 @@
 
 
             .when("/machine/del_gym_user/machine_id=:id/:access_token", {
-                templateUrl : "Views/machine/del_gym_user.html",
+                templateUrl : "Views/machine/del_gym_user.html",   
+               
+            })
 
-                
+
+            .when("/machine/edit_gym_user/machine_id=:id/:access_token", {
+                templateUrl : "Views/machine/edit_gym_user.html",   
                
             })
 

@@ -123,7 +123,7 @@ function closeNav() {
 
   $("#edit").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/edit_gym_user?' + access_token
+    var url = '/machine/edit_gym_user/machine_id=' + machine_id + '/access_token=' + access_token
     window.location.href = url;
             
     
@@ -132,7 +132,7 @@ function closeNav() {
 
   $("#view").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/view_gym_users?' + access_token
+    var url = '/machine/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
     window.location.href = url;
             
     

@@ -22,7 +22,7 @@
 </script> -->
 <div ng-controller="add_gym_user_controller">
 <div id="">
-<div ng-include src="'Views/machine/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+<div ng-include src="'Views/machine/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 <div class="container"> 
 <div class="row">
 <div class="col-md-3 col-sm-0 col-xs-0"></div>
@@ -93,9 +93,9 @@
       <input tabindex="8" required name="cart_value" type = "number">
     </fieldset>
     
-    <fieldset>
+    <!-- <fieldset>
       <input tabindex="8" name="machine_id" value = {{users_json_data.id}} type = "text" style="display: none;">
-    </fieldset>
+    </fieldset> -->
     
       <button name="submit" type="submit" id="contact-submit">Submit</button>
       <script>
