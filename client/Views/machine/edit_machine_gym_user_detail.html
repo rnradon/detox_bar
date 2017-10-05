@@ -1,12 +1,12 @@
-<div ng-controller="edit_user_controller">
+<div ng-controller="edit_machine_gym_user_detail_controller">
 
 
 <link rel="stylesheet" type="text/css" href="res/css/register_user/base.css"/>
 
 <div id=" ">
-<div ng-include src="'Views/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+<div ng-include src="'Views/machine/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
-<script>
+<!-- <script>
    $(window).ready(function(){  
         // var access_token = window.location.search.substring(1);
         var unsorted_url = window.location.pathname.split('id=');
@@ -37,16 +37,16 @@
                 cache: false,
               });
         });
-</script>
-<div id = "page_view" style="display: none;">
+</script> -->
+<div id = "page_view" >
 <div class="container" id="main_form"> 
 
-<!-- <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;"></iframe> -->
+<iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;"></iframe>
   <div id="contact" style="margin-top: 10%; margin-bottom: 10%">
     <h3>Edit User Details</h3>
     <h4>Edit the details of the user if you wish</h4>
 
-    <script>
+    <!-- <script>
         $("#back_to_admin_landing_page").click(function back_to_admin_landing_page(){
           var unsorted_url = window.location.pathname.split('id=');
           unsorted_url = unsorted_url[1].split('/access_token=');
@@ -58,7 +58,7 @@
           window.location.href = url
         });
     </script>
-    <a href="" id="back_to_admin_landing_page"><button name="submit" type="submit" id="contact-submit" style="background-color: #4c96af; margin-bottom: 3%">Back</button></a>
+    <a href="" id="back_to_admin_landing_page"><button name="submit" type="submit" id="contact-submit" style="background-color: #4c96af; margin-bottom: 3%">Back</button></a> -->
     <form id = "myForm" action="" method="put" target="dummyframe">
     <fieldset>
       <input id="registration_number" type="number" tabindex="1" name="registration_number" required value={{users_json_data.registration_number}}  style="width: 100%; padding-left: 10px;">
@@ -73,29 +73,48 @@
       <input placeholder="Email" type="email" tabindex="5" value={{users_json_data.email}} required name="email">
     </fieldset>
     <fieldset>
+      <input placeholder="Cart Value" type="number" tabindex="6" value={{users_json_data.cart_value}} required name="cart_value" style="width:100%; padding-left: 10px">
+    </fieldset>
+    <fieldset>
       <div class="row">
       <div class="col-md-1 col-sm-1 col-xs-1" style="border: 1px solid #ccc; background: #f0f0f0; margin-left:15px; padding: 0.9%;">+91</div>
       <div class="col-md-1 col-sm-1 col-xs-1" style="padding:0px;margin: 1%;margin-right: -15px;margin-left: 10px;">-</div>
       <div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0px;width: 76%">
-      <input  placeholder="Phone Number" type="tel" pattern="[789][0-9]{9}" tabindex="6" required value={{users_json_data.phone_number}} name="phone_number" style="width: 100%;">
+      <input  placeholder="Phone Number" type="tel" pattern="[789][0-9]{9}" tabindex="7" required value={{users_json_data.phone_number}} name="phone_number" style="width: 100%;">
       </div>
       </div>
     </fieldset>
+    
       <button name="submit" type="submit" id="contact-submit" class="edit">Submit</button>
       <script>
 
       $(".edit").click(function(event){
-        var unsorted_url = window.location.pathname.split('id=');
-         unsorted_url = unsorted_url[1].split('/access_token=');
+        
+        var unsorted_url = window.location.pathname.split('machine_id=');
+        console.log(unsorted_url + ' unsorted_url')
+        var semisorted_url = unsorted_url[1].split('/user=')
+        var machine_id = semisorted_url[0]
+        console.log('machine_id = ' + machine_id)
+         
+        var userId_url = semisorted_url[1].split('/access_token=');
+       
+
+        var userId = userId_url[0]
+        console.log('userId = ' + userId)
+
+        access_token = userId_url[1]
+
+        // var access_token = access_token_url[1]
+        console.log('access_token = ' + access_token)
         // alert("WORKING")
-        console.log(unsorted_url)
-    var id = unsorted_url[0]
-    var access_token = unsorted_url[1]
+        var url = '/api/gym_users/' + userId + '?' + 'access_token=' + access_token
+        alert(url)
+        alert("=====")
 
          $('#myForm')
         .ajaxForm({
             method: 'PATCH',
-            url : '/api/gym_users/' + id + '?' + 'access_token=' + access_token, // or whatever
+            url : url, // or whatever
             dataType : 'json',
             
             success : function (response) {
@@ -107,10 +126,11 @@
                 //       $scope.myWelcome = response.data;
                 //   });
                 // });
-                var url = '/admin?access_token=' + access_token
+                var url = '/machine/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
                 window.location.href = url; //CHANGE THIS TO VIEW USER CARD
             },
             error: function (response) {
+              alert("ERROR")
                 // alert(response)
                 console.log(response)
                 // setTimeout(function() { window.location.reload(true); }, 2000)

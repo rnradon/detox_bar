@@ -86,7 +86,6 @@
           alert(url)
           console.log(url)
 
-        var access_token = window.location.search.substring(1);
         $('#myForm')
           .ajaxForm({
             method: 'GET',
@@ -102,7 +101,7 @@
                 //       $scope.myWelcome = response.data;
                 //   });
                 // });
-                var reload_url = '/machine/gym_user_detail/machine_id=' + response[0].machineId + '/user=' + response[0].id + '/' + access_token
+                var reload_url = '/machine/edit_gym_user_detail/machine_id=' + response[0].machineId + '/user=' + response[0].id + '/' + access_token
                 alert(reload_url)
                 window.location.href = reload_url
             },
