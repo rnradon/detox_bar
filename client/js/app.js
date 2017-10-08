@@ -50,6 +50,13 @@
             })
 
 
+            .when("/machine/del_gym_user_detail/machine_id=:id/user=:userId/:access_token", {
+                templateUrl : "Views/machine/deactivate_user.html",   
+                
+                controller: 'del_machine_gym_user_detail_controller'
+            })
+
+
             .when("/machine/edit_gym_user/machine_id=:id/:access_token", {
                 templateUrl : "Views/machine/edit_gym_user.html",   
                
@@ -61,6 +68,11 @@
                 controller: 'edit_machine_gym_user_detail_controller'
             })
 
+            .when("/machine/search/search_key=:search_key/machine_id=:id/:access_token", {
+                templateUrl : "Views/machine/view_user_search.html",
+                
+                controller: 'search_user_controller'
+            })
 
             .when("/analytics_gym_user/user_found/gymUserId=:id/:access_token", {
                 templateUrl : "Views/analytics_chart_user.html",
@@ -149,6 +161,23 @@
 
 
      app.controller('edit_machine_gym_user_detail_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
+        
+        var machineId = $routeParams.id
+        var access_token = $routeParams.access_token
+        var userId = $routeParams.userId
+        var url = '/api/gym_users/' + userId + '?' + access_token
+        alert('url')
+        alert(url)
+        $http.get(url).then(function(response) {
+        $scope.users_json_data = response.data;
+            });
+
+
+    }]);
+
+
+
+     app.controller('del_machine_gym_user_detail_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
         
         var machineId = $routeParams.id
         var access_token = $routeParams.access_token

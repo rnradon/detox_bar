@@ -40,13 +40,13 @@ function closeNav() {
    $("#logout").click(function logout(){
     // var access_token = window.location.search.substring(1);
     
-    var url = '/logout?' + access_token
+    var url = 'api/machines/logout?access_token=' + access_token
     // alert("WITH ID")
     alert(url)
 
     $.ajax({
             method: 'POST',
-            url : '/api/users/logout?' + access_token, // or whatever
+            url : url, // or whatever
             dataType : 'json',
             success : function (response) {
                 // alert("LOGOUT")
@@ -59,10 +59,10 @@ function closeNav() {
                 // });
                 // var backlen = history.length;
                 // history.go(-backlen);
-                window.location.href = '/';
+                window.location.href = '/machine/login';
             },
             error: function (response) {
-                // alert("Authentication Timed Out")
+                alert("Authentication Timed Out")
                 // setTimeout(function() { window.location.reload(true); }, 2000)
                 window.location.replace('/');
             },

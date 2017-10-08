@@ -1,0 +1,142 @@
+<link rel="stylesheet" type="text/css" href="res/css/del_user/card.css">
+
+<script>
+  $(window).ready(function(){  
+  var unsorted_url = window.location.pathname.split('id=');
+  unsorted_url = unsorted_url[1].split('/access_token=');
+  var access_token = unsorted_url[1]
+  access_token = 'access_token=' + access_token
+  var machine_id = unsorted_url[0]
+  $.ajax({ url: '/api/gym_users?' + access_token ,
+          context: document.body,
+          success: function(response){
+             
+             document.getElementById("page_view").style.display = "block";
+             console.log("SUCCESS " + response)
+             
+          },
+          
+          error: function (response) {
+            // document.getElementById("error").style.display = "block";
+            // $('#error').delay(4000).fadeOut(300);
+            // var resp = response.responseText
+            // console.log(resp)
+            // console.log(response)
+            alert("You are not authenticated to view this page")
+            setTimeout(function() { window.location.replace('/machine/login'); }, 0000)
+          },
+          cache: false,
+        });
+  });
+</script>
+
+
+
+<div class="container" id= "page_view" style="display: none;">
+<div ng-include src="'Views/machine/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+<div ng-controller="view_machine_gym_user_detail_controller">
+<div class="col-md-4 col-sm-2">
+</div>
+<div class="col-md-4 col-sm-8" style="margin-top: 5%; text-align: center;">
+    <div class="col-md-offset-4"></div>
+	<div class="col-md-4 categoryWrap" style = "display:flex; align-items:center; flex-direction:column;height:450px">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <h4><span class="label label-warning" style="margin-top: 5% "> &#x20b9; {{users_json_data.cart_value}}</span></h4>
+      
+        </div>
+        
+      </div>
+
+<!--               <h4><span class="glyphicon glyphicon-remove" style="margin-top: 5% "></h4>
+       --><div style = "display:flex; align-items:center">
+        <img src = "res/img/flat-avatar.png" class="catImage text-center" style=" margin-top: 10%;width:80px; height:80px; border-radius: 50px;">
+      </div>
+      <div class="catContent" style = "align-items:center">
+        <h3 class="titleHeading" style = "text-align:center">{{users_json_data.name}}
+        </h3>
+        <p class = "help-block" style = "text-align:center">{{users_json_data.username}}<br> {{users_json_data.address}}</p>
+        <hr>
+        <div style="margin-bottom: 10px;">
+          <p style = "text-align:center">{{users_json_data.phone_number}}<br>{{users_json_data.email}}
+          </p>
+        </div>
+        <br/>
+        <div class="col-xs-12" style = "align-items:center; text-align:center"><br>
+            <a class="btn btn-info btnBg" id="delete" >
+              <span>Delete User
+              </span> 
+            </a>
+          </div>
+        
+      </div>
+      <br/>
+      <div class="cl">
+          </div>
+      <div class="cl">
+      </div>
+      <br/>
+    </div>
+    <div class="col-md-4">
+		
+	
+
+
+
+</div>
+<div class="col-md-4 col-sm-2">
+</div>
+
+</div>
+<script>
+      
+        $("#delete").click(function(event){
+        var unsorted_url = window.location.pathname.split('machine_id=');
+        console.log(unsorted_url + ' unsorted_url')
+        var semisorted_url = unsorted_url[1].split('/user=')
+        var machine_id = semisorted_url[0]
+        console.log('machine_id = ' + machine_id)
+         
+        var userId_url = semisorted_url[1].split('/access_token=');
+       
+
+        var userId = userId_url[0]
+        console.log('userId = ' + userId)
+
+        access_token = userId_url[1]
+
+        // var access_token = access_token_url[1]
+        console.log('access_token = ' + access_token)
+        // alert("WORKING")
+        var url = '/api/gym_users/' + userId + '?' + 'access_token=' + access_token
+        alert(url)
+        alert("=====")
+
+         $.ajax({
+            method: 'DELETE',
+            url : url, // or whatever
+            dataType : 'json',
+            success : function (response) {
+                alert("Successfully deleted the user. Page will reload to delete users page")
+                // var app = angular.module('my_app', []);
+                // app.controller('myCtrl', function($scope, $http) {
+                //   $http.get('/api/gym_users/findOne?filter[where][registration_number]=' + reg_number + '&' + access_token)
+                //   .then(function(response) {
+                //       $scope.myWelcome = response.data;
+                //   });
+                // });
+                var url = '/machine/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
+                window.location.href = url
+            },
+            error: function (response) {
+                alert("Invalid Registration Number. The page will reload automatically. Please enter the correct Registration Number")
+                // setTimeout(function() { window.location.reload(true); }, 2000)
+            },
+            cache: false,
+        });
+          
+        });
+      
+
+      
+      </script>
