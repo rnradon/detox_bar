@@ -10,6 +10,12 @@
         //         authenticate: true
         //     });
         $routeProvider
+
+            .when("/", {
+                templateUrl : "Views/admin/login.html",
+            })
+
+
             .when("/machine/login", {
                 templateUrl : "Views/machine/login.html",
             })
