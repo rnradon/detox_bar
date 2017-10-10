@@ -14,6 +14,14 @@
     "quantity": {
       "type": "number",
       "required": true
+    },
+    "cost_per_ml": {
+      "type": "number",
+      "required": true
+    },
+    "bottle_name":{
+      "type":"string",
+      "required":true
     }
   },
   "validations": [],

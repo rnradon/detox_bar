@@ -5,7 +5,7 @@
 
 <div ng-include src="'Views/machine/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 <div ng-controller="search_user_controller">
-<!-- <script>
+<script>
   $(window).ready(function(){  
         // var access_token = window.location.search.substring(1);
         var unsorted_url = window.location.pathname.split('id=');
@@ -36,10 +36,10 @@
                 cache: false,
               });
         });
-</script> -->
+</script>
   
   <div id="main">
-    <div class = "container" id = "page_view" style="" class="col-md-12 col-xs-12 col-lg-12 col-sm-12"> 
+    <div class = "container" id = "page_view" style="display: none" class="col-md-12 col-xs-12 col-lg-12 col-sm-12"> 
       <div class = "search" class="col-md-12" style = "padding:0;"> 
           <div class="col-md-12">
             <input type="text" class="form-control" id="search" onkeydown="search(this)" placeholder="&#xF002; Search by Name or Registration Number..."/ style="font-family: FontAwesome"> 

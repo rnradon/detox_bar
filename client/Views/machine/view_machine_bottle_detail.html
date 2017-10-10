@@ -43,26 +43,51 @@
 
   <div class="row">
   	<div class="col-md-12">
-    <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" id="div1" ng-repeat="user in users_json_data" style="background-color: ; margin-top: 10%;">
-          <script>
-          
-            var unsorted_url = window.location.pathname.split('/access_token=');
-            // unsorted_url = unsorted_url[1].split('/access_token=');
-            access_token = unsorted_url[1]
-            // 
-          </script>
+    <div class="col-md-4 col-xs-12 col-lg-4 col-sm-12" id="div1" ng-repeat="user in users_json_data" style="background-color: ; margin-top: 10%;">
+      <div class="col-md-4 categoryWrap" style = "display:flex; align-items:center; flex-direction:column;height:250px">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h3>{{user.ingredient_name}}</h3>
+        
+          </div>
+        </div>
+        
+        
+          <div class="progress" style="width: 100%;">
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{user.quantity/10}}" aria-valuemin="000" aria-valuemax="999" style="width:{{user.quantity/10}}%;" style="margin-top: 25%">
+              {{user.quantity}} ml 
+            </div>
+          </div>
+        
 
-  <label  style="font-family: sans-serif">{{user.ingredient_name}}</label>
-         <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="{{user.quantity/10}}"
-  aria-valuemin="0" aria-valuemax="1000" style="width:{{user.quantity/10}}%;">
-    {{user.quantity}} ml 
-  </div>
-</div><br>
-           
-      
-       
+      <div class="catContent" style = "align-items:center">
+        <h3 class="titleHeading" style = "text-align:center">{{user.cost_per_ml}
+        </h3>
+
+        <hr>
+        <div style="margin-bottom: 10px;">
+          <p style = "text-align:center">{{user.bottle_name}}
+          </p>
+        </div>
+        <br/>
+        <!-- <div class="col-xs-12" style = "align-items:center; text-align:center"><br>
+            <a class="btn btn-info btnBg" id="delete" >
+              <span>Delete User
+              </span> 
+            </a>
+          </div> -->
+        
+      </div>
+      <br/>
+      <div class="cl">
+          </div>
+      <div class="cl">
+      </div>
+      <br/>
     </div>
-</div>
+      
+      <br> 
+    </div>
+    </div>
   </div>
  </div>
