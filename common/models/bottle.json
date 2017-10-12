@@ -9,18 +9,22 @@
   "properties": {
     "ingredient_name": {
       "type": "string",
+      "default": "Flavour Name",
       "required": true
     },
     "quantity": {
       "type": "number",
+      "default": "999",
       "required": true
     },
     "cost_per_ml": {
       "type": "number",
+      "default": "10",
       "required": true
     },
     "bottle_name":{
       "type":"string",
+      "default":"Motor Name",
       "required":true
     }
   },

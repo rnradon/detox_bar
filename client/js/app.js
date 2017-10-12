@@ -41,6 +41,11 @@
                 controller: 'view_machine_bottle_detail_controller'
             })
 
+            .when("/machine/bottles/machine_id=:id/bottle_id=:bottleId/:access_token", {
+                templateUrl : "Views/machine/view_machine_selected_bottle.html",
+                
+                controller: 'view_machine_selected_bottle_detail_controller'
+            })
 
             .when("/machine/add_gym_user/machine_id=:id/:access_token", {
                 templateUrl : "Views/machine/add_gym_user.html",
@@ -165,6 +170,21 @@
 
     }]);
 
+
+     app.controller('view_machine_selected_bottle_detail_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
+        
+        var machineId = $routeParams.id
+        var access_token = $routeParams.access_token
+        var bottleId = $routeParams.bottleId
+        var url = '/api/machines/' + machineId + '/bottles/' + bottleId + '?' + access_token
+        alert('url')
+        alert(url)
+        $http.get(url).then(function(response) {
+        $scope.users_json_data = response.data;
+            });
+
+
+    }]);
 
      app.controller('edit_machine_gym_user_detail_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
         

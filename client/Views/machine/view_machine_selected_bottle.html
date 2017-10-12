@@ -1,0 +1,185 @@
+<div ng-controller="view_machine_selected_bottle_detail_controller">
+
+
+<link rel="stylesheet" type="text/css" href="res/css/register_user/base.css"/>
+
+<div id=" ">
+<div ng-include src="'Views/machine/header_with_machine_and_user_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+
+<script>
+   $(window).ready(function(){  
+        // var access_token = window.location.search.substring(1);
+        var unsorted_url = window.location.pathname.split('machine_id=');
+        console.log(unsorted_url + ' unsorted_url')
+        var semisorted_url = unsorted_url[1].split('/bottle_id=')
+        var machine_id = semisorted_url[0]
+        console.log('machine_id = ' + machine_id)
+         
+        var bottleId_url = semisorted_url[1].split('/access_token=');
+       
+
+        var bottleId = bottleId_url[0]
+        console.log('bottleId = ' + bottleId)
+
+        access_token = bottleId_url[1]
+
+        // var access_token = access_token_url[1]
+        console.log('access_token = ' + access_token)
+        // alert("WORKING")
+        var url = '/api/bottles/' + bottleId + '?' + 'access_token=' + access_token
+        alert(url)
+        alert("=====")
+        $.ajax({ 
+                // url: '/api/gym_users?' + access_token ,
+                url: url,
+                context: document.body,
+                success: function(response){
+     
+                 document.getElementById("page_view").style.display = "block";
+                 console.log("SUCCESS " + response)
+                 
+              },
+                error: function (response) {
+                  // document.getElementById("error").style.display = "block";
+                  // $('#error').delay(4000).fadeOut(300);
+                  // var resp = response.responseText
+                  // console.log(resp)
+                  // console.log(response)
+                  alert("You are not authenticated to view this page")
+                  setTimeout(function() { window.location.replace('/machine/login'); }, 0000)
+                },
+                cache: false,
+              });
+        });
+</script>
+<div id = "page_view" style="display: none;">
+<div class="container" id="main_form"> 
+
+<iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+  <div id="contact" style="margin-top: 10%; margin-bottom: 10%">
+    <h3>Edit Bottle </h3>
+    <h4>Edit the details of the bottle if you wish</h4>
+
+    <!-- <script>
+        $("#back_to_admin_landing_page").click(function back_to_admin_landing_page(){
+          var unsorted_url = window.location.pathname.split('id=');
+          unsorted_url = unsorted_url[1].split('/access_token=');
+          // alert("WORKING")
+          console.log(unsorted_url)
+          var id = unsorted_url[0]
+          var access_token = unsorted_url[1]
+          var url = '/view_gym_users?access_token=' + access_token
+          window.location.href = url
+        });
+    </script>
+    <a href="" id="back_to_admin_landing_page"><button name="submit" type="submit" id="contact-submit" style="background-color: #4c96af; margin-bottom: 3%">Back</button></a> -->
+    <form id = "myForm" action="" method="put" target="dummyframe">
+    <fieldset>
+      <div class="row">
+        
+          <div class="col-md-12"> Flavour : 
+          </div>
+          <div class="col-md-12">
+            <input placeholder="Flavour" type="text" tabindex="1" value={{users_json_data.ingredient_name}} required name="ingredient_name">
+          </div>
+      </div>
+     
+    </fieldset>
+    
+    <fieldset>
+      <div class="row">
+        <div class="col-md-12">
+           Cost per ml : 
+         </div>
+          <div class="col-md-12">
+            <input placeholder="Cost per ml" type="number" tabindex="2" value={{users_json_data.cost_per_ml}} required name="cost_per_ml" style="width:100%; padding-left: 10px">
+          </div>
+        </div>
+      
+    </fieldset>
+    
+    <fieldset>
+      <div class="row">
+        <div class="col-md-12">
+         Quantity (in ml):
+          </div>
+          <div class="col-md-12"> 
+            <input placeholder="Quantity" type="number" tabindex="3" value={{users_json_data.quantity}} required name="quantity" max="999" style="width:100%; padding-left: 10px">
+          </div>
+        
+      </div>
+    </fieldset>
+    
+    <fieldset>
+      <div class="row">
+        <div class="col-md-12">
+         Motor Name : 
+          </div>
+          <div class="col-md-12"> 
+            <input placeholder="Motor Name" type="text" tabindex="4" value={{users_json_data.bottle_name}} readonly required name="bottle_name" style="width:100%; padding-left: 10px">
+          </div>
+        </div>
+     
+    </fieldset>
+    
+      <button name="submit" type="submit" id="contact-submit" class="edit">Submit</button>
+      <script>
+
+      $(".edit").click(function(event){
+        
+        alert("EDIT")
+        var unsorted_url = window.location.pathname.split('machine_id=');
+        console.log(unsorted_url + ' unsorted_url')
+        var semisorted_url = unsorted_url[1].split('/bottle_id=')
+        var machine_id = semisorted_url[0]
+        console.log('machine_id = ' + machine_id)
+         
+        var bottleId_url = semisorted_url[1].split('/access_token=');
+       
+
+        var bottleId = bottleId_url[0]
+        console.log('bottleId = ' + bottleId)
+
+        access_token = bottleId_url[1]
+
+        // var access_token = access_token_url[1]
+        console.log('access_token = ' + access_token)
+        // alert("WORKING")
+        var url = '/api/bottles/' + bottleId + '?' + 'access_token=' + access_token
+        alert(url)
+        alert("=====")
+
+         $('#myForm')
+        .ajaxForm({
+            method: 'PATCH',
+            url : url, // or whatever
+            dataType : 'json',
+            
+            success : function (response) {
+                alert("Successfully edited the bottle.")
+                // var app = angular.module('my_app', []);
+                // app.controller('myCtrl', function($scope, $http) {
+                //   $http.get('/api/gym_users/findOne?filter[where][registration_number]=' + reg_number + '&' + access_token)
+                //   .then(function(response) {
+                //       $scope.myWelcome = response.data;
+                //   });
+                // });
+                var url = '/machine/bottles/machine_id=' + machine_id + '/access_token=' + access_token
+                window.location.href = url; //CHANGE THIS TO VIEW USER CARD
+            },
+            error: function (response) {
+              alert("ERROR")
+                // alert(response)
+                console.log(response)
+                // setTimeout(function() { window.location.reload(true); }, 2000)
+            },
+            cache: false,
+        });
+          
+        });
+      
+      </script>
+    
+</div>
+</div>
+</div>
