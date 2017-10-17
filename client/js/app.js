@@ -2,13 +2,7 @@
 
     var app = angular.module("myApp", ["ngRoute","ui.router"]);
     app.config(function($routeProvider, $locationProvider, $httpProvider) {
-        // $stateProvider
-        //     .state('add-review', {
-        //         url: '/gym_users:userId?',
-        //         templateUrl: 'Views/index.html',
-        //         // controller: 'AddReviewController',
-        //         authenticate: true
-        //     });
+       
         $routeProvider
 
             .when("/admin", {
