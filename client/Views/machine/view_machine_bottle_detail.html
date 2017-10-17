@@ -4,7 +4,6 @@
 
 <div ng-include src="'Views/machine/header_with_machine_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
-<!-- <script>alert("HTML")</script> -->
 <div ng-controller="view_machine_bottle_detail_controller">
 
 <script>
@@ -19,16 +18,11 @@
           success: function(response){
              
              document.getElementById("page_view").style.display = "block";
-             console.log("SUCCESS " + response)
              
           },
           
           error: function (response) {
-            // document.getElementById("error").style.display = "block";
-            // $('#error').delay(4000).fadeOut(300);
-            // var resp = response.responseText
-            // console.log(resp)
-            // console.log(response)
+            
             alert("You are not authenticated to view this page")
             setTimeout(function() { window.location.replace('/'); }, 0000)
           },
@@ -51,14 +45,7 @@
         
         
         
-          <!-- <div class="progress" style="width: 100%;">
-            <div class="progress-bar" role="progressbar" aria-valuenow="{{user.quantity/10}}" aria-valuemin="000" aria-valuemax="999" style="width:{{user.quantity/10}}%;" style="margin-top: 25%">
-              {{user.quantity}} ml 
-            </div>
-          </div> -->
-
           
-        <!-- <br> -->
 
       <div class="catContent" style = "align-items:center">
         <h3 class="titleHeading" style = "text-align:center">Cost Per ML : {{user.cost_per_ml}}
@@ -75,12 +62,7 @@
           </p>
         </div>
         <br/>
-        <!-- <div class="col-xs-12" style = "align-items:center; text-align:center"><br>
-            <a class="btn btn-info btnBg" id="delete" >
-              <span>Delete User
-              </span> 
-            </a>
-          </div> -->
+       
         
       </div>
       </div>

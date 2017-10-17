@@ -4,33 +4,8 @@
 
 <div ng-include src="'Views/machine/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
-<!-- <script>alert("HTML")</script> -->
 <div ng-controller="view_machine_gym_user_detail_controller">
 
-<!-- <script>
-  $(window).ready(function(){  
-  var access_token = window.location.search.substring(1);
-  $.ajax({ url: '/api/machines?' + access_token ,
-          context: document.body,
-          success: function(response){
-             
-             document.getElementById("page_view").style.display = "block";
-             console.log("SUCCESS " + response)
-             
-          },
-          error: function (response) {
-            // document.getElementById("error").style.display = "block";
-            // $('#error').delay(4000).fadeOut(300);
-            // var resp = response.responseText
-            // console.log(resp)
-            // console.log(response)
-            alert("You are not authenticated to view this page")
-            setTimeout(function() { window.location.replace('/'); }, 0000)
-          },
-          cache: false,
-        });
-  });
-</script> -->
 <script>alert("DONE")</script>  
   <div id="main">
     <div class = "container" id = "page_view" class="col-md-12 col-xs-12 col-lg-12 col-sm-12"> 
@@ -71,9 +46,9 @@
           <script>
           
             var unsorted_url = window.location.pathname.split('/access_token=');
-            // unsorted_url = unsorted_url[1].split('/access_token=');
+            
             access_token = unsorted_url[1]
-            // 
+            
           </script>
           <a href="/machine/gym_user_detail/machine_id={{user.machineId}}/user={{user.id}}/access_token=" onclick = "location.href=this.href + access_token; return false;" class="anchor" style="text-decoration: none; color:#333">
             <div class="categoryWrap" style = "display:flex; align-items:center; flex-direction:column;height:350px">

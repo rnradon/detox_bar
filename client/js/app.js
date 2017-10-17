@@ -156,20 +156,7 @@
         
     });
 
-// app.controller('view_machine_gym_user_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
-        
-//         alert("IN MACHINE GYM USER CONTROLLER")
-//         var id = $routeParams.id
-//         var access_token = $routeParams.access_token
-//         var url = '/api/machines/' + id + '/gymUser?' + access_token
-//         alert(url)
-//         $http.get('/api/machines/' + id + '/gymUser?' + access_token)
-//         .then(function(response) {
-//         $scope.users_json_data = response.data;
-//         // $scope.reg_number = $routeParams.registration_number;
-//         // alert("CONTROLLER WORKS")
-//         });
-//     }]);
+
 
     
      app.controller('view_admin_machines_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
@@ -247,7 +234,7 @@
         var id = $routeParams.id
         var access_token = $routeParams.access_token
         var url = '/api/machines/' + id + '/gymUser?' + access_token
-        alert(url)
+        
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -255,12 +242,10 @@
 
         $http.get('/api/machines/' + id + '/gymUser/count?' + access_token).then(
             function(success) {
-                alert("SUCC")
-                console.log('RESPONSE', success);
+                
                  $scope.count = success.data;
             }, function(error) {
-                alert("ERROR in count")
-                console.log('ERROR', error);
+                
             });
 
 
@@ -275,8 +260,7 @@
         var access_token = $routeParams.access_token
         var userId = $routeParams.userId
         var url = '/api/gym_users/' + userId + '?' + access_token
-        alert('url')
-        alert(url)
+        
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -291,8 +275,7 @@
         var access_token = $routeParams.access_token
         var bottleId = $routeParams.bottleId
         var url = '/api/machines/' + machineId + '/bottles/' + bottleId + '?' + access_token
-        alert('url')
-        alert(url)
+        
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -306,8 +289,7 @@
         var access_token = $routeParams.access_token
         var userId = $routeParams.userId
         var url = '/api/gym_users/' + userId + '?' + access_token
-        alert('url')
-        alert(url)
+        
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -323,8 +305,7 @@
         var access_token = $routeParams.access_token
         var userId = $routeParams.userId
         var url = '/api/gym_users/' + userId + '?' + access_token
-        alert('url')
-        alert(url)
+        
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -338,7 +319,7 @@
         var id = $routeParams.id
         var access_token = $routeParams.access_token
         var url = '/api/machines/' + id + '/bottles?' + access_token
-        alert(url)
+        
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -351,12 +332,11 @@
         var id = $routeParams.id
         var access_token = $routeParams.access_token
         var url = '/api/machines/' + id + '?' + access_token
-        alert(url)
+        
         $http.get(url)
         .then(function(response) {
         $scope.users_json_data = response.data;
-        // $scope.reg_number = $routeParams.registration_number;
-        // alert("CONTROLLER WORKS")
+        
         });
     }]);
 
@@ -369,18 +349,13 @@
         .then(function(response) {
         $scope.users_json_data = response.data;
 
-        // $scope.data=[10,90];    //REMEMBER
         
-        // $scope.reg_number = $routeParams.registration_number;
-        // alert("CONTROLLER WORKS")
         });
 
         $http.get('/api/gym_users/count?access_token=' + access_token)
         .then(function(response) {
         $scope.count = response.data;
 
-        // $scope.reg_number = $routeParams.registration_number;
-        // alert("CONTROLLER WORKS")
         });  
 
 
@@ -396,16 +371,14 @@
         
         var key = $routeParams.search_key
         var access_token = $routeParams.access_token
-        // alert(access_token)
+        
         $http.get('/api/gym_users?filter[where][or][0][name][regexp]=/^' + key + '/i&filter[where][or][1][registration_number]=' + key +'&' + access_token)
         .then(function(response) {
 
-        // $scope.users_json_data = response.data;
+        
         $scope.users_json_data = response.data
         
-        // $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales", "Tele Sales", "Corporate Sales"];
-        // $scope.data = [300, 500, 100, 40, 120];
-        // $scope.reg_number = $routeParams.registration_number;
+ 
         });
 
 
@@ -414,8 +387,6 @@
         .then(function(response) {
         $scope.count = response.data;
 
-        // $scope.reg_number = $routeParams.registration_number;
-        // alert("CONTROLLER WORKS")
         });  
 
     }]);
@@ -432,7 +403,7 @@
         var access_token = $routeParams.access_token
         $http.get('/api/users?access_token=' + access_token)
         .then(function successCallback(response) {
-            // alert("SUCCESS")
+            
           }, function errorCallback(response) {
             alert("Authorization Timed Out !")
                 window.location.href = '/';
@@ -443,10 +414,6 @@
 
 
     }]);
-// run(['$rootScope', function($rootScope) {
-//     $rootScope.$on("$routeChangeSuccess", function(event, next, current) {
-//         $rootScope.showHeader = next.$$route.showHeader;
-//     });
-// }]);
+
 
 })();

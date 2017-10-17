@@ -12,16 +12,11 @@
           success: function(response){
              
              document.getElementById("page_view").style.display = "block";
-             console.log("SUCCESS " + response)
+             
              
           },
           
           error: function (response) {
-            // document.getElementById("error").style.display = "block";
-            // $('#error').delay(4000).fadeOut(300);
-            // var resp = response.responseText
-            // console.log(resp)
-            // console.log(response)
             alert("You are not authenticated to view this page")
             setTimeout(function() { window.location.replace('/'); }, 0000)
           },
@@ -94,13 +89,11 @@
       <script>
         var unsorted_url = window.location.pathname.split('id=');
           unsorted_url = unsorted_url[1].split('/access_token=');
-          console.log(unsorted_url)
+         
           var access_token = unsorted_url[1]
-          // access_token = 'access_token=' + access_token
           var machine_id = unsorted_url[0]
-          console.log("access_token " + access_token)
-          alert(access_token)
-          alert(machine_id)
+         
+          
           var url = '/api/machines/' + machine_id + '/gymUser?access_token=' + access_token
       $('#myForm')
       .ajaxForm({
@@ -108,18 +101,17 @@
         dataType : 'html',
         success : function (response) {
             
-            alert("CHECK")
+            
             alert("Credentials Submitted Successfully. You'll be redirected to the admin page now !")
-            alert("URL")
+           
             var reload_url = '/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
-            alert(reload_url)
+            
             
             window.location.href = reload_url
-            // location.delay(2000).reload();
-             // setTimeout(function() { window.location.reload(true); }, 1000)
+            
         },
         error: function (response) {
-            // alert(response.responseText)
+      
             alert("User Already Exists / Enter the Correct Details !")
             window.location.reload();
         },

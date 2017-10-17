@@ -8,43 +8,35 @@
 
 <script>
    $(window).ready(function(){  
-        // var access_token = window.location.search.substring(1);
+        
         var unsorted_url = window.location.pathname.split('machine_id=');
-        console.log(unsorted_url + ' unsorted_url')
+        
         var semisorted_url = unsorted_url[1].split('/user=')
         var machine_id = semisorted_url[0]
-        console.log('machine_id = ' + machine_id)
+        
          
         var userId_url = semisorted_url[1].split('/access_token=');
        
 
         var userId = userId_url[0]
-        console.log('userId = ' + userId)
+       
 
         access_token = userId_url[1]
 
-        // var access_token = access_token_url[1]
-        console.log('access_token = ' + access_token)
-        // alert("WORKING")
+       
         var url = '/api/gym_users/' + userId + '?' + 'access_token=' + access_token
-        alert(url)
-        alert("=====")
         $.ajax({ 
-                // url: '/api/gym_users?' + access_token ,
+              
                 url: '/api/gym_users?access_token=' + access_token,
                 context: document.body,
                 success: function(response){
      
                  document.getElementById("page_view").style.display = "block";
-                 console.log("SUCCESS " + response)
+                
                  
               },
                 error: function (response) {
-                  // document.getElementById("error").style.display = "block";
-                  // $('#error').delay(4000).fadeOut(300);
-                  // var resp = response.responseText
-                  // console.log(resp)
-                  // console.log(response)
+                  
                   alert("You are not authenticated to view this page")
                   setTimeout(function() { window.location.replace('/'); }, 0000)
                 },
@@ -60,19 +52,7 @@
     <h3>Edit User Details</h3>
     <h4>Edit the details of the user if you wish</h4>
 
-    <!-- <script>
-        $("#back_to_admin_landing_page").click(function back_to_admin_landing_page(){
-          var unsorted_url = window.location.pathname.split('id=');
-          unsorted_url = unsorted_url[1].split('/access_token=');
-          // alert("WORKING")
-          console.log(unsorted_url)
-          var id = unsorted_url[0]
-          var access_token = unsorted_url[1]
-          var url = '/view_gym_users?access_token=' + access_token
-          window.location.href = url
-        });
-    </script>
-    <a href="" id="back_to_admin_landing_page"><button name="submit" type="submit" id="contact-submit" style="background-color: #4c96af; margin-bottom: 3%">Back</button></a> -->
+   
     <form id = "myForm" action="" method="put" target="dummyframe">
     <fieldset>
       <input id="registration_number" type="number" tabindex="1" name="registration_number" required value={{users_json_data.registration_number}}  style="width: 100%; padding-left: 10px;">
@@ -105,25 +85,22 @@
       $(".edit").click(function(event){
         
         var unsorted_url = window.location.pathname.split('machine_id=');
-        console.log(unsorted_url + ' unsorted_url')
+        
         var semisorted_url = unsorted_url[1].split('/user=')
         var machine_id = semisorted_url[0]
-        console.log('machine_id = ' + machine_id)
+       
          
         var userId_url = semisorted_url[1].split('/access_token=');
        
 
         var userId = userId_url[0]
-        console.log('userId = ' + userId)
+       
 
         access_token = userId_url[1]
 
-        // var access_token = access_token_url[1]
-        console.log('access_token = ' + access_token)
-        // alert("WORKING")
+        
         var url = '/api/gym_users/' + userId + '?' + 'access_token=' + access_token
-        alert(url)
-        alert("=====")
+       
 
          $('#myForm')
         .ajaxForm({
@@ -133,21 +110,13 @@
             
             success : function (response) {
                 alert("Successfully edited the user.")
-                // var app = angular.module('my_app', []);
-                // app.controller('myCtrl', function($scope, $http) {
-                //   $http.get('/api/gym_users/findOne?filter[where][registration_number]=' + reg_number + '&' + access_token)
-                //   .then(function(response) {
-                //       $scope.myWelcome = response.data;
-                //   });
-                // });
+                
                 var url = '/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
                 window.location.href = url; //CHANGE THIS TO VIEW USER CARD
             },
             error: function (response) {
               alert("ERROR")
-                // alert(response)
-                console.log(response)
-                // setTimeout(function() { window.location.reload(true); }, 2000)
+                
             },
             cache: false,
         });
