@@ -7,7 +7,11 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: #f5f5f5;
+    background-color:#f5f5f5; 
+    background-image: url('../img/DETOX_01.paddingg');
+    background-repeat: no-repeat; 
+    background-size: 70%;
+    background-position:bottom;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
