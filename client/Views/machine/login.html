@@ -53,7 +53,7 @@
             $('#success').delay(4000).fadeOut(300);
             console.log(response.id)
             // window.location.replace('/view_gym_users?access_token=' + response.id);
-             setTimeout(function() { window.location.replace('/machine/view_gym_users/machine_id=' + response.userId + '/access_token=' + response.id); }, 1500)
+             setTimeout(function() { window.location.replace('/view_gym_users/machine_id=' + response.userId + '/access_token=' + response.id); }, 1500)
             
         },
         error: function (response) {

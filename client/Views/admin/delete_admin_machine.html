@@ -1,9 +1,9 @@
-<div ng-controller="delete_user_controller">
+<div ng-controller="delete_admin_machine_controller">
 
 
 <link rel="stylesheet" type="text/css" href="res/css/del_user/card.css">
 <div id="">
-<script>
+<!-- <script>
     $(window).ready(function(){  
       // var access_token = window.location.search.substring(1);
       var unsorted_url = window.location.pathname.split('id=');
@@ -34,24 +34,12 @@
               cache: false,
             });
       });
-</script>
-<div ng-include src="'Views/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
-<div class="col-xs-12 col-sm-3 col-md-4 col-lg-4 col-md-offset-4" id = "page_view" style = "align-items: center; margin-top: 10%; display: none;">
+</script> -->
+<div ng-include src="'Views/admin/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+<div class="col-xs-12 col-sm-3 col-md-4 col-lg-4 col-md-offset-4" style = "align-items: center; margin-top: 10%; ">
 		  <div class="categoryWrap" style = "display:flex; align-items:center; flex-direction:column;">
 
-		  <script>
-		        $("#back_to_del_landing_page").click(function back_to_admin_landing_page(){
-		          var unsorted_url = window.location.pathname.split('id=');
-		       	  unsorted_url = unsorted_url[1].split('/access_token=');
-		       	
-		          console.log(unsorted_url)
-		 		  var id = unsorted_url[0]
-		 		  var access_token = unsorted_url[1]
-		          var url = '/del_gym_user?' + 'access_token=' + access_token
-		          window.location.href = url
-		        });
-		    </script>
-		    <a href="" id="back_to_del_landing_page" class="btn btn-info backBtn" style="margin-top: 5%"><span>Back</span></a>
+
 
           
           <div style = "display:flex; align-items:center">
@@ -60,12 +48,12 @@
             <div class="catContent" style = "align-items:center">
               <h3 class="titleHeading" style = "text-align:center; text-transform: uppercase;">{{users_json_data.name}}
               </h3>
-              <p class = "help-block" style = "text-align:center">{{users_json_data.registration_number}}<br> +91-{{users_json_data.phone_number}}</p>
+              <p class = "help-block" style = "text-align:center">{{users_json_data.username}}<br> +91-{{users_json_data.phone_number}}</p>
               <hr>
               <div >
-                <p style = "text-align:center;">{{users_json_data.email}}<br><br>
-
+                <p style = "text-align:center;">{{users_json_data.email}}
                 </p>
+                <p style = "text-align:center;">{{user_json_data.address}}</p><br><br>
               </div>
               <br/>
             </div>
@@ -92,7 +80,7 @@
 <script>
       
         $("#delete").click(function(event){
-       	var unsorted_url = window.location.pathname.split('id=');
+       	var unsorted_url = window.location.pathname.split('machine_id=');
        	 unsorted_url = unsorted_url[1].split('/access_token=');
        	
        	console.log(unsorted_url)
@@ -101,7 +89,7 @@
 
          $.ajax({
             method: 'DELETE',
-            url : '/api/gym_users/' + id + '?' + 'access_token=' + access_token, // or whatever
+            url : '/api/machines/' + id + '?' + 'access_token=' + access_token, // or whatever
             dataType : 'json',
             success : function (response) {
                 alert("Successfully deleted the user. Page will reload to delete users page")
@@ -112,7 +100,7 @@
                 //       $scope.myWelcome = response.data;
                 //   });
                 // });
-                var url = '/del_gym_user?' + 'access_token=' +access_token
+                var url = '/admin/view_machines?access_token=' + access_token
                 window.location.href = url
             },
             error: function (response) {

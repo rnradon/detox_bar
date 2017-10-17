@@ -17,11 +17,11 @@ function closeNav() {
 <div id="mySidenav" class="sidenav" style="box-shadow: 2px 4px 2px #a9a9a9;">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a class="anchor" href="" id="home"><i class="fa fa-home" aria-hidden="true"></i></i> Home</a>
-  <a class="anchor" href="" id="add"><i class="fa fa-plus-circle" aria-hidden="true"></i></i> Add Member</a>
-  <a class="anchor" href="" id="delete"> <i class="fa fa-trash" aria-hidden="true"></i></i> Delete Member</a>
-  <a class="anchor" href="" id="edit"><i class="fa fa-pencil" aria-hidden="true"></i></i> Edit Member</a>
-  <a class="anchor" href="" id="view"><i class="fa fa-book" aria-hidden="true"></i></i> View Members</a>
-  <a class="anchor" href="" id="charts"><i class="fa fa-area-chart" aria-hidden="true"></i> Analysis</a>
+  <a class="anchor" href="" id="add"><i class="fa fa-plus-circle" aria-hidden="true"></i></i> Add Machine</a>
+  <a class="anchor" href="" id="delete"> <i class="fa fa-trash" aria-hidden="true"></i></i> Delete Machine</a>
+  <a class="anchor" href="" id="edit"><i class="fa fa-pencil" aria-hidden="true"></i></i> Edit Machine</a>
+  <a class="anchor" href="" id="view"><i class="fa fa-book" aria-hidden="true"></i></i> View Machines</a>
+  <a class="anchor" href="" id="configure"><i class="fa fa-area-chart" aria-hidden="true"></i> Configure Machine</a>
   <a class="anchor" href="" id="change_auth_password"><i class="fa fa-key" aria-hidden="true"></i> Change Password</a>
   <a class="anchor" href="" id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
   
@@ -65,15 +65,6 @@ var access_token = window.location.search.substring(1);
  
 
 
-   $("#charts").click(function logout(){
-    // var access_token = window.location.search.substring(1);
-    var url = '/charts?' + access_token
-    window.location.href = url;
-            
-    
-  });
-
-
 
   $("#change_auth_password").click(function logout(){
     // var access_token = window.location.search.substring(1);
@@ -86,9 +77,9 @@ var access_token = window.location.search.substring(1);
 
 
 
-    $("#home").click(function logout(){
+    $("#home").click(function home(){
     // var access_token = window.location.search.substring(1);
-    var url = '/view_gym_users?' + access_token
+    var url = '/admin/view_machines?' + access_token
     window.location.href = url;
             
     
@@ -99,7 +90,7 @@ var access_token = window.location.search.substring(1);
 
   $("#add").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/add_gym_user?' + access_token
+    var url = '/admin/add_machine?' + access_token
     window.location.href = url;
             
     
@@ -109,7 +100,7 @@ var access_token = window.location.search.substring(1);
 
   $("#delete").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/del_gym_user?' + access_token
+    var url = '/admin/delete_machine?' + access_token
     window.location.href = url;
             
     
@@ -119,7 +110,7 @@ var access_token = window.location.search.substring(1);
 
   $("#edit").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/edit_gym_user?' + access_token
+    var url = '/admin/edit_machine?' + access_token
     window.location.href = url;
             
     
@@ -128,7 +119,7 @@ var access_token = window.location.search.substring(1);
 
   $("#view").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/view_gym_users?' + access_token
+    var url = '/admin/view_machines?' + access_token
     window.location.href = url;
             
      });

@@ -9,12 +9,11 @@
   "properties": {
     "ingredient_name": {
       "type": "string",
-      "default": "Flavour Name",
-      "required": true
+      "required": true,
+      "index": {"unique": true} 
     },
     "quantity": {
       "type": "number",
-      "default": "999",
       "required": true
     },
     "cost_per_ml": {

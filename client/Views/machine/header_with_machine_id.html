@@ -59,7 +59,7 @@ function closeNav() {
                 // });
                 // var backlen = history.length;
                 // history.go(-backlen);
-                window.location.href = '/machine/login';
+                window.location.href = '/login';
             },
             error: function (response) {
                 alert("Authentication Timed Out")
@@ -74,7 +74,7 @@ function closeNav() {
 
    $("#status").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/machine/bottles/machine_id=' + machine_id + '/access_token=' + access_token
+    var url = '/bottles/machine_id=' + machine_id + '/access_token=' + access_token
     window.location.href = url;
             
     
@@ -92,7 +92,7 @@ function closeNav() {
 
     $("#home").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/machine/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
+    var url = '/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
     window.location.href = url;
             
     
@@ -103,7 +103,7 @@ function closeNav() {
 
   $("#add").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/machine/add_gym_user/machine_id=' + machine_id + '/access_token=' + access_token
+    var url = '/add_gym_user/machine_id=' + machine_id + '/access_token=' + access_token
     window.location.href = url;
             
     
@@ -113,7 +113,7 @@ function closeNav() {
 
   $("#delete").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/machine/del_gym_user/machine_id=' + machine_id + '/access_token=' + access_token
+    var url = '/del_gym_user/machine_id=' + machine_id + '/access_token=' + access_token
     window.location.href = url;
             
     
@@ -123,7 +123,7 @@ function closeNav() {
 
   $("#edit").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/machine/edit_gym_user/machine_id=' + machine_id + '/access_token=' + access_token
+    var url = '/edit_gym_user/machine_id=' + machine_id + '/access_token=' + access_token
     window.location.href = url;
             
     
@@ -132,7 +132,7 @@ function closeNav() {
 
   $("#view").click(function logout(){
     // var access_token = window.location.search.substring(1);
-    var url = '/machine/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
+    var url = '/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
     window.location.href = url;
             
     

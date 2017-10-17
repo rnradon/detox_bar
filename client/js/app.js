@@ -11,43 +11,92 @@
         //     });
         $routeProvider
 
-            .when("/", {
+            .when("/admin", {
                 templateUrl : "Views/admin/login.html",
             })
 
 
-            .when("/machine/login", {
+            .when("/admin/view_machines:access_token?", {
+                templateUrl : "Views/admin/view_admin_machines.html",
+
+                controller : 'view_admin_machines_controller'
+            })
+
+            .when("/admin/edit_machine/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/edit_admin_machine.html",
+
+                controller : 'edit_admin_machine_controller'
+            })
+
+            .when("/admin/delete_machine/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/delete_admin_machine.html",
+
+                controller : 'delete_admin_machine_controller'
+            })
+
+            .when("/admin/bottles/machine_id=:id/:access_token", {
+                templateUrl : "Views/admin/view_machine_bottle_detail.html",
+                
+                controller: 'view_machine_bottle_detail_controller'
+            })
+
+            .when("/admin/bottles/machine_id=:id/bottle_id=:bottleId/:access_token", {
+                templateUrl : "Views/machine/view_machine_selected_bottle.html",
+                
+                controller: 'view_machine_selected_bottle_detail_controller'
+            })
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
+            //MACHINE USER
+            .when("/", {
+                templateUrl : "Views/machine/login.html",
+            })
+
+            .when("/login", {
                 templateUrl : "Views/machine/login.html",
             })
 
 
-            .when("/machine/view_gym_users/machine_id=:id/:access_token", {
+            .when("/view_gym_users/machine_id=:id/:access_token", {
                 templateUrl : "Views/machine/view_machine_gym_user.html",
                 
                 controller: 'view_machine_gym_user_controller'
             })
 
 
-            .when("/machine/gym_user_detail/machine_id=:id/user=:userId/:access_token", {
+            .when("/gym_user_detail/machine_id=:id/user=:userId/:access_token", {
                 templateUrl : "Views/machine/view_machine_gym_user_detail.html",
                 
                 controller: 'view_machine_gym_user_detail_controller'
             })
 
 
-            .when("/machine/bottles/machine_id=:id/:access_token", {
+            .when("/bottles/machine_id=:id/:access_token", {
                 templateUrl : "Views/machine/view_machine_bottle_detail.html",
                 
                 controller: 'view_machine_bottle_detail_controller'
             })
 
-            .when("/machine/bottles/machine_id=:id/bottle_id=:bottleId/:access_token", {
+            .when("/bottles/machine_id=:id/bottle_id=:bottleId/:access_token", {
                 templateUrl : "Views/machine/view_machine_selected_bottle.html",
                 
                 controller: 'view_machine_selected_bottle_detail_controller'
             })
 
-            .when("/machine/add_gym_user/machine_id=:id/:access_token", {
+            .when("/add_gym_user/machine_id=:id/:access_token", {
                 templateUrl : "Views/machine/add_gym_user.html",
 
                 controller: 'add_gym_user_controller'
@@ -55,42 +104,37 @@
             })
 
 
-            .when("/machine/del_gym_user/machine_id=:id/:access_token", {
+            .when("/del_gym_user/machine_id=:id/:access_token", {
                 templateUrl : "Views/machine/del_gym_user.html",   
                
             })
 
 
-            .when("/machine/del_gym_user_detail/machine_id=:id/user=:userId/:access_token", {
+            .when("/del_gym_user_detail/machine_id=:id/user=:userId/:access_token", {
                 templateUrl : "Views/machine/deactivate_user.html",   
                 
                 controller: 'del_machine_gym_user_detail_controller'
             })
 
 
-            .when("/machine/edit_gym_user/machine_id=:id/:access_token", {
+            .when("/edit_gym_user/machine_id=:id/:access_token", {
                 templateUrl : "Views/machine/edit_gym_user.html",   
                
             })
 
-            .when("/machine/edit_gym_user_detail/machine_id=:id/user=:userId/:access_token", {
+            .when("/edit_gym_user_detail/machine_id=:id/user=:userId/:access_token", {
                 templateUrl : "Views/machine/edit_machine_gym_user_detail.html",
                 
                 controller: 'edit_machine_gym_user_detail_controller'
             })
 
-            .when("/machine/search/search_key=:search_key/machine_id=:id/:access_token", {
+            .when("/search/search_key=:search_key/machine_id=:id/:access_token", {
                 templateUrl : "Views/machine/view_user_search.html",
                 
                 controller: 'search_user_controller'
             })
 
-            .when("/analytics_gym_user/user_found/gymUserId=:id/:access_token", {
-                templateUrl : "Views/analytics_chart_user.html",
-                
-                controller: 'analytics_user_controller'
-            });
-
+           
 
         $locationProvider.html5Mode(true);
 
@@ -126,6 +170,76 @@
 //         // alert("CONTROLLER WORKS")
 //         });
 //     }]);
+
+    
+     app.controller('view_admin_machines_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
+
+        // alert("YES")
+        var access_token = $routeParams.access_token
+        var url = '/api/machines/?access_token=' + access_token
+        alert(url)
+        $http.get(url).then(function(response) {
+        $scope.users_json_data = response.data;
+            });
+
+
+        $http.get('/api/machines/count?access_token=' + access_token).then(
+            function(success) {
+                alert("SUCC")
+                console.log('RESPONSE', success);
+                 $scope.count = success.data;
+            }, function(error) {
+                alert("ERROR in count")
+                console.log('ERROR', error);
+            });
+
+
+    }]);
+
+
+     app.controller('edit_admin_machine_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
+        
+        var machineId = $routeParams.machineId
+        var access_token = $routeParams.access_token
+        // var userId = $routeParams.userId
+        var url = '/api/machines/' + machineId + '?' + access_token
+        alert('url')
+        alert(url)
+        $http.get(url).then(function(response) {
+        $scope.users_json_data = response.data;
+            });
+
+
+    }]);
+
+
+
+      app.controller('delete_admin_machine_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
+        
+        var machineId = $routeParams.machineId
+        var access_token = $routeParams.access_token
+        // var userId = $routeParams.userId
+        var url = '/api/machines/' + machineId + '?' + access_token
+        alert('url')
+        alert(url)
+        $http.get(url).then(function(response) {
+        $scope.users_json_data = response.data;
+            });
+
+
+    }]);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
      app.controller('view_machine_gym_user_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
@@ -275,22 +389,7 @@
     }]);
 
 
-      app.controller('analytics_user_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
-        
-        var id = $routeParams.id
-        var access_token = $routeParams.access_token
-        alert(id)
-        alert(access_token)
-        $http.get('/api/health_analytics?filter[where][gymUserId]=' + id + '&' + access_token)
-        .then(function(response) {
-        // $scope.users_json_data = response.data;
-        $scope.users_json_data = [10,20,30]
-        // $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales", "Tele Sales", "Corporate Sales"];
-        // $scope.data = [300, 500, 100, 40, 120];
-        // $scope.reg_number = $routeParams.registration_number;
-        });
-    }]);
-
+     
 
 
       app.controller('search_user_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
@@ -323,27 +422,7 @@
 
 
 
-      app.controller('health_analytics_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
-        
-        var id = $routeParams.id
-        var access_token = $routeParams.access_token
-        
-        $http.get('/api/gym_users/' + id + '?' + access_token)
-        .then(function(response) {
-        $scope.users_json_data = response.data;
-        // $scope.reg_number = $routeParams.registration_number;
-        // alert("CONTROLLER WORKS")
-        });
-
-
-        $http.get('/api/health_analytics?filter[where][gymUserId]=' + id + '&' + access_token)
-        .then(function(response) {
-        $scope.users_health_data = response.data;
-        
-        // $scope.reg_number = $routeParams.registration_number;
-        // alert("CONTROLLER WORKS")
-        });
-    }]);
+      
 
      
 

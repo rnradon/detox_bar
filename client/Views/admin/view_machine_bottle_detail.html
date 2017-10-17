@@ -44,7 +44,7 @@
   <div class="container row">
   	<div class="col-md-12">
     <div class="col-md-3 col-xs-12 col-lg-3 col-sm-12" id="div1" ng-repeat="user in users_json_data" style="background-color: ; margin-top: 10%;">
-      <a href="/machine/bottles/machine_id={{user.machineId}}/bottle_id={{user.id}}/access_token=" onclick = "location.href=this.href + access_token; return false;" class="anchor" style="text-decoration: none; color:#333">
+      <a href="/admin/bottles/machine_id={{user.machineId}}/bottle_id={{user.id}}/access_token=" onclick = "location.href=this.href + access_token; return false;" class="anchor" style="text-decoration: none; color:#333">
       <div class="col-md-4 categoryWrap" style = "display:flex; align-items:center; flex-direction:column;height:250px">
         <div class="row">
           <h3>{{user.ingredient_name}}</h3>

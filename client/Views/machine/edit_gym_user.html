@@ -23,7 +23,7 @@
             // console.log(resp)
             // console.log(response)
             alert("You are not authenticated to view this page")
-            setTimeout(function() { window.location.replace('/machine/login'); }, 0000)
+            setTimeout(function() { window.location.replace('/'); }, 0000)
           },
           cache: false,
         });
@@ -88,7 +88,7 @@
                 //       $scope.myWelcome = response.data;
                 //   });
                 // });
-                var reload_url = '/machine/edit_gym_user_detail/machine_id=' + response[0].machineId + '/user=' + response[0].id + '/' + access_token
+                var reload_url = '/edit_gym_user_detail/machine_id=' + response[0].machineId + '/user=' + response[0].id + '/' + access_token
                 alert(reload_url)
                 window.location.href = reload_url
             },

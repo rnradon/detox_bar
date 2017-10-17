@@ -23,7 +23,7 @@
             // console.log(resp)
             // console.log(response)
             alert("You are not authenticated to view this page")
-            setTimeout(function() { window.location.replace('/machine/login'); }, 0000)
+            setTimeout(function() { window.location.replace('/'); }, 0000)
           },
           cache: false,
         });
@@ -111,7 +111,7 @@
             alert("CHECK")
             alert("Credentials Submitted Successfully. You'll be redirected to the admin page now !")
             alert("URL")
-            var reload_url = '/machine/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
+            var reload_url = '/view_gym_users/machine_id=' + machine_id + '/access_token=' + access_token
             alert(reload_url)
             
             window.location.href = reload_url
