@@ -169,7 +169,7 @@
         // alert("YES")
         var access_token = $routeParams.access_token
         var url = '/api/machines/?access_token=' + access_token
-        alert(url)
+        // alert(url)
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -324,7 +324,7 @@
         var id = $routeParams.id
         var access_token = $routeParams.access_token
         var url = '/api/machines/' + id + '/bottles?' + access_token
-        alert(url)
+        // alert(url)
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
