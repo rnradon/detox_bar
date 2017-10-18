@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="res/css/del_user/card.css">
 
 
-<div ng-include src="'Views/machine/header_with_machine_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+<div ng-include src="'Views/admin/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
 <!-- <script>alert("HTML")</script> -->
 <div ng-controller="view_machine_bottle_detail_controller">
@@ -13,6 +13,7 @@
   unsorted_url = unsorted_url[1].split('/access_token=');
   var access_token = unsorted_url[1]
   access_token = 'access_token=' + access_token
+  alert(access_token)
   var machine_id = unsorted_url[0]
   $.ajax({ url: '/api/gym_users?' + access_token ,
           context: document.body,
@@ -44,7 +45,8 @@
   <div class="container row">
   	<div class="col-md-12">
     <div class="col-md-3 col-xs-12 col-lg-3 col-sm-12" id="div1" ng-repeat="user in users_json_data" style="background-color: ; margin-top: 10%;">
-      <a href="/admin/bottles/machine_id={{user.machineId}}/bottle_id={{user.id}}/access_token=" onclick = "location.href=this.href + access_token; return false;" class="anchor" style="text-decoration: none; color:#333">
+      <a href="/admin/bottles/machine_id={{user.machineId}}/bottle_id={{user.id}}/" onclick = "location.href=this.href + access_token; return false;" class="anchor" style="text-decoration: none; color:#333">
+
       <div class="col-md-4 categoryWrap" style = "display:flex; align-items:center; flex-direction:column;height:250px">
         <div class="row">
           <h3>{{user.ingredient_name}}</h3>

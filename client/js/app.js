@@ -16,11 +16,22 @@
                 controller : 'view_admin_machines_controller'
             })
 
+             .when("/admin/edit_machine/:access_token?", {
+                templateUrl : "Views/admin/edit_machine_by_username.html",
+
+            })
+
             .when("/admin/edit_machine/machine_id=:machineId/:access_token", {
                 templateUrl : "Views/admin/edit_admin_machine.html",
 
                 controller : 'edit_admin_machine_controller'
             })
+
+            .when("/admin/delete_machine/:access_token?", {
+                templateUrl : "Views/admin/delete_machine_by_username.html",
+
+            })
+
 
             .when("/admin/delete_machine/machine_id=:machineId/:access_token", {
                 templateUrl : "Views/admin/delete_admin_machine.html",
@@ -35,7 +46,7 @@
             })
 
             .when("/admin/bottles/machine_id=:id/bottle_id=:bottleId/:access_token", {
-                templateUrl : "Views/machine/view_machine_selected_bottle.html",
+                templateUrl : "Views/admin/view_machine_selected_bottle.html",
                 
                 controller: 'view_machine_selected_bottle_detail_controller'
             })
@@ -313,7 +324,7 @@
         var id = $routeParams.id
         var access_token = $routeParams.access_token
         var url = '/api/machines/' + id + '/bottles?' + access_token
-        
+        alert(url)
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
