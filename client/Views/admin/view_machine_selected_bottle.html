@@ -6,7 +6,7 @@
 <div id=" ">
 <div ng-include src="'Views/admin/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
-<!-- <script>
+<script>
    $(window).ready(function(){  
         
         var unsorted_url = window.location.pathname.split('machine_id=');
@@ -43,8 +43,8 @@
                 cache: false,
               });
         });
-</script> -->
-<div id = "page_view" >
+</script>
+<div id = "page_view" style="display: none;">
 <div class="container" id="main_form"> 
 
 <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;"></iframe>
@@ -133,7 +133,7 @@
             success : function (response) {
                 alert("Successfully edited the bottle.")
                 
-                var url = '/bottles/machine_id=' + machine_id + '/access_token=' + access_token
+                var url = '/admin/bottles/machine_id=' + machine_id + '/access_token=' + access_token
                 window.location.href = url; //CHANGE THIS TO VIEW USER CARD
             },
             error: function (response) {

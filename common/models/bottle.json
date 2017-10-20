@@ -10,7 +10,9 @@
     "ingredient_name": {
       "type": "string",
       "required": true,
-      "index": {"unique": true} 
+      "index": {
+        "unique": true
+      }
     },
     "quantity": {
       "type": "number",
@@ -18,13 +20,13 @@
     },
     "cost_per_ml": {
       "type": "number",
-      "default": "10",
-      "required": true
+      "required": true,
+      "default": "10"
     },
-    "bottle_name":{
-      "type":"string",
-      "default":"Motor Name",
-      "required":true
+    "bottle_name": {
+      "type": "string",
+      "required": true,
+      "default": "Motor Name"
     }
   },
   "validations": [],

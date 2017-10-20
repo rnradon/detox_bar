@@ -1,0 +1,113 @@
+<link rel="stylesheet" type="text/css" href="res/css/register_user/base.css"/>
+
+<script>
+  $(window).ready(function(){  
+  var unsorted_url = window.location.pathname.split('id=');
+  unsorted_url = unsorted_url[1].split('/access_token=');
+  var access_token = unsorted_url[1]
+  access_token = 'access_token=' + access_token
+  var machine_id = unsorted_url[0]
+
+  var url = '/api/machines?' + access_token 
+  alert("URL1")
+  alert(url)
+  $.ajax({ url: ,
+          context: document.body,
+          success: function(response){
+             
+             document.getElementById("page_view").style.display = "block";
+             
+             
+          },
+          
+          error: function (response) {
+            alert("You are not authenticated to view this page")
+            setTimeout(function() { window.location.replace('/admin'); }, 0000)
+          },
+          cache: false,
+        });
+  });
+</script>
+
+<!-- <div ng-controller="add_gym_user_controller"> -->
+<div id="">
+<div ng-include src="'Views/admin/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+
+<div id="page_view" style="display: none">
+<div class="container " id="main_form" style="margin-top: 3%;" > 
+
+<!-- <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;"></iframe> -->
+  <div id="contact" style="margin-top: 0%; margin-bottom: 10%">
+    <h3>Motor B </h3>
+
+    
+    <form id = "myForm" action="" method="post" target="dummyframe">
+    <fieldset>
+      <input placeholder="Ingredient Name" type="text" tabindex="1" required autofocus name="ingredient_name" style="width: 100%; padding-left: 10px;">
+    </fieldset>
+    
+    <fieldset>
+      <input placeholder="Quantity" type="number" tabindex="2" required name="quantity" max="999">
+    </fieldset>
+    <fieldset>
+      <input placeholder="Cost per Ml" type="number" tabindex="3" required name="cost_per_ml">
+    </fieldset>
+    <fieldset>
+      <input value="B" type="text" tabindex="4" required readonly name="bottle_name" style="display: none">
+    </fieldset>
+
+    
+   
+   
+    
+    <!-- <fieldset>
+      <input tabindex="8" name="machine_id" value = {{users_json_data.id}} type = "text" style="display: none;">
+    </fieldset> -->
+    
+      <button name="submit" type="submit" id="contact-submit" class="edit">Submit</button>
+      </form>
+      <script>
+        $(".edit").click(function(event){
+         var unsorted_url = window.location.pathname.split('machine_id=');
+         unsorted_url = unsorted_url[1].split('/access_token=');
+        // alert("WORKING")
+        console.log(unsorted_url)
+        var id = unsorted_url[0]
+        var access_token = unsorted_url[1]
+        var url =  '/api/machines/' + id + '/bottles?' + 'access_token=' + access_token
+        alert("url")
+        alert(url)
+      $('#myForm')
+      .ajaxForm({
+        url : url, // or whatever
+        dataType : 'json',
+        success : function (response) {
+            
+            
+            alert("Bottle in Motor B Added")
+            console.log("response.id")
+            // console.log(JSON.stringify(response.id))
+            // console.log(response.id)
+            // console.log(response)
+            var reload_url = '/admin/add_bottles/motor_C/machine_id=' + id + '/access_token=' + access_token
+            // alert(reload_url)
+            
+            window.location.href = reload_url
+            
+        },
+        error: function (response) {
+      
+            alert("ERROR")
+            console.log(response)
+            // window.location.reload();
+        },
+        cache: false,
+    });
+    });
+      </script>
+    
+</div>
+
+
+</div>
+</div>

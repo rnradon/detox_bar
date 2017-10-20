@@ -16,7 +16,6 @@
              console.log("SUCCESS " + response)
              
           },
-          
           error: function (response) {
             // document.getElementById("error").style.display = "block";
             // $('#error').delay(4000).fadeOut(300);
@@ -30,20 +29,22 @@
         });
   });
 </script>
-<div id="">
+
+<div id=" ">
 <div ng-include src="'Views/admin/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
-<div id = "page_view" style="display: none;">
-<div class="container " id="main_form"> 
+
+<div id = "page_view" >
+<div class="container" id="main_form"> 
 
 <!-- <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;"></iframe> -->
   <div id="contact" style="margin-top: 10%; margin-bottom: 10%">
-    <h3>Delete Machine</h3>
-    <h4>Enter the user name of the Machine Owner</h4>
+    <h3>Pre - Fed Recipe</h3>
+    <h4>Enter the username of the Machine Owner</h4>
 
-
+   
     <form id = "myForm" action="" method="post" target="dummyframe">
-    <fieldset>
+   <fieldset>
       <input placeholder="Machine Username" type="text" tabindex="1" required autofocus name="username" id="username" style="width: 100%; padding-left: 10px;">
     </fieldset>
       <button name="submit" type="submit" id="contact-submit">Submit</button>
@@ -54,13 +55,13 @@
       
       $(document).ready(function(){
         $("button").click(function (){
-          var username = $("#username").val();
+           var username = $("#username").val();
 
         var access_token = window.location.search.substring(1);
         $('#myForm')
           .ajaxForm({
             method: 'GET',
-            url : '/api/machines/findOne?filter[where][username]=' + username + '&' + access_token, // or whatever
+            url : '/api/machines/findOne?filter[where][username]=' + username + '&' + access_token,// or whatever
             dataType : 'json',
             success : function (response) {
                 // alert(reg_number)
@@ -72,7 +73,7 @@
                 //       $scope.myWelcome = response.data;
                 //   });
                 // });
-                var url = '/admin/delete_machine/machine_id=' + response.id + '/' + access_token
+                var url = '/admin/prefed_recipes/machine_id=' + response.id + '/' + access_token
                 window.location.href = url
             },
             error: function (response) {
@@ -90,5 +91,5 @@
       </script>
     
 </div>
-</div>
+</div >
 </div>

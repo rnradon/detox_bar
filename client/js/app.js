@@ -9,6 +9,50 @@
                 templateUrl : "Views/admin/login.html",
             })
 
+             .when("/admin/add_machine:access_token?", {
+                templateUrl : "Views/admin/add_machine.html",
+
+            })
+
+             .when("/admin/add_bottles/motor_A/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/add_machine_bottle_A.html",
+
+            })
+
+             .when("/admin/add_bottles/motor_B/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/add_machine_bottle_B.html",
+
+            })
+
+             .when("/admin/add_bottles/motor_C/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/add_machine_bottle_C.html",
+
+            })
+
+             .when("/admin/add_bottles/motor_D/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/add_machine_bottle_D.html",
+
+            })
+
+             .when("/admin/add_bottles/motor_E/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/add_machine_bottle_E.html",
+
+            })
+
+             .when("/admin/add_bottles/motor_F/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/add_machine_bottle_F.html",
+
+            })
+
+             .when("/admin/add_bottles/motor_G/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/add_machine_bottle_G.html",
+
+            })
+
+             .when("/admin/add_bottles/motor_H/machine_id=:machineId/:access_token", {
+                templateUrl : "Views/admin/add_machine_bottle_H.html",
+
+            })            
 
             .when("/admin/view_machines:access_token?", {
                 templateUrl : "Views/admin/view_admin_machines.html",
@@ -51,6 +95,31 @@
                 controller: 'view_machine_selected_bottle_detail_controller'
             })
 
+            .when("/admin/configure_machine:access_token?", {
+                templateUrl : "Views/admin/configure_bottles_by_username.html",
+
+                
+            })
+
+             .when("/admin/prefed_recipes:access_token?", {
+                templateUrl : "Views/admin/prefed_recipe_by_username.html",
+
+            })
+
+             .when("/admin/prefed_recipes/machine_id=:id/:access_token?", {
+                templateUrl : "Views/admin/prefed_recipe.html",
+                controller: 'view_machine_bottle_detail_controller'
+            })
+
+             .when("/admin/view_prefed_recipes:access_token?", {
+                templateUrl : "Views/admin/view_prefed_recipe_by_username.html",
+
+            })
+
+             .when("/admin/view_prefed_recipes/machine_id=:id/:access_token?", {
+                templateUrl : "Views/admin/view_prefed_recipe.html",
+                controller: 'view_prefed_recipes_controller'
+            })
 
 
            
@@ -222,7 +291,17 @@
     }]);
 
 
+       app.controller('view_prefed_recipes_controller', ['$routeParams', '$scope', '$http', function($routeParams, $scope, $http ) {
+        
+        var id = $routeParams.id
+        var access_token = $routeParams.access_token
+        var url = '/api/machines/' + id + '/prefedRecipes?' + access_token
+        alert(url)
+        $http.get(url).then(function(response) {
+        $scope.users_json_data = response.data;
+            });
 
+    }]);
 
 
 
@@ -324,7 +403,7 @@
         var id = $routeParams.id
         var access_token = $routeParams.access_token
         var url = '/api/machines/' + id + '/bottles?' + access_token
-        // alert(url)
+        alert(url)
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });

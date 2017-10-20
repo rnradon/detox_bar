@@ -1,0 +1,29 @@
+{
+  "name": "user_fav_recipe",
+  "plural": "user_fav_recipes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "encoded_string": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "gymUser": {
+      "type": "belongsTo",
+      "model": "gym_user",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

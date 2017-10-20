@@ -46,5 +46,13 @@
   "bottle": {
     "dataSource": "gym_app",
     "public": true
+  },
+  "prefed_recipe": {
+    "dataSource": "gym_app",
+    "public": true
+  },
+  "user_fav_recipe": {
+    "dataSource": "gym_app",
+    "public": true
   }
 }

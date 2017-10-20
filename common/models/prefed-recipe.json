@@ -1,0 +1,121 @@
+{
+  "name": "prefed_recipe",
+  "plural": "prefed_recipes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "ingredient_name_1": {
+      "type": "string",
+      "required": true
+    },
+    "bottle_name_1": {
+      "type": "string",
+      "required": true
+    },
+    "quantity_1": {
+      "type": "number",
+      "required": true
+    },
+    "ingredient_name_2": {
+      "type": "string",
+      "required": true
+    },
+    "bottle_name_2": {
+      "type": "string",
+      "required": true
+    },
+    "quantity_2": {
+      "type": "number",
+      "required": true
+    },
+    "ingredient_name_3": {
+      "type": "string",
+      "required": true
+    },
+    "bottle_name_3": {
+      "type": "string",
+      "required": true
+    },
+    "quantity_3": {
+      "type": "number",
+      "required": true
+    },
+    "ingredient_name_4": {
+      "type": "string",
+      "required": true
+    },
+    "bottle_name_4": {
+      "type": "string",
+      "required": true
+    },
+    "quantity_4": {
+      "type": "number",
+      "required": true
+    },
+    "ingredient_name_5": {
+      "type": "string",
+      "required": true
+    },
+    "bottle_name_5": {
+      "type": "string",
+      "required": true
+    },
+    "quantity_5": {
+      "type": "number",
+      "required": true
+    },
+    "ingredient_name_6": {
+      "type": "string",
+      "required": true
+    },
+    "bottle_name_6": {
+      "type": "string",
+      "required": true
+    },
+    "quantity_6": {
+      "type": "number",
+      "required": true
+    },
+    "ingredient_name_7": {
+      "type": "string",
+      "required": true
+    },
+    "bottle_name_7": {
+      "type": "string",
+      "required": true
+    },
+    "quantity_7": {
+      "type": "number",
+      "required": true
+    },
+    "ingredient_name_8": {
+      "type": "string",
+      "required": true
+    },
+    "bottle_name_8": {
+      "type": "string",
+      "required": true
+    },
+    "quantity_8": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "machine": {
+      "type": "belongsTo",
+      "model": "machine",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

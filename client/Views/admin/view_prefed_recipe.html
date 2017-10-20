@@ -2,16 +2,20 @@
 <link rel="stylesheet" type="text/css" href="res/css/del_user/card.css">
 
 
-<div ng-include src="'Views/admin/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+<div ng-include src="'Views/admin/header_with_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
 <!-- <script>alert("HTML")</script> -->
-<div ng-controller="view_admin_machines_controller">
+<div ng-controller="view_prefed_recipes_controller">
 
 <script>
   $(window).ready(function(){  
-   var access_token = window.location.search.substring(1);
+  var unsorted_url = window.location.pathname.split('id=');
+  unsorted_url = unsorted_url[1].split('/access_token=');
+  var access_token = unsorted_url[1]
+  access_token = 'access_token=' + access_token
+  var machine_id = unsorted_url[0]
 
-   var url = '/api/machines?' + access_token 
+  var url = '/api/machines?' + access_token 
   alert("URL1")
   alert(url)
 
@@ -40,7 +44,7 @@
 
 
   <div id="main">
-    <div class = "container" id = "page_view"  class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="display: none;"> 
+    <div class = "container" id = "page_view"  class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="display: none"> 
       <!-- <div class = "search" class="col-md-12" style = "padding:0;"> 
         
           
@@ -70,22 +74,29 @@
 
 
 
-      <div class = "col-md-12 col-xs-12 col-lg-12 col-sm-12" style= "padding:10px;">
+      <!-- <div class = "col-md-12 col-xs-12 col-lg-12 col-sm-12" style= "padding:10px;">
         <div class =  "help-block col-md-6" style="color: #0abb3b; font-weight: bold">You have {{count.count}} Registered Users. :) </div>
-      </div>
+      </div> -->
 
       <div class = "col-xs-12 col-lg-12 col-sm-12 col-md-12" style="padding: 0px;">
 
         <div style="padding: 20px 0">
 
           <!-- <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" id="div1" ng-repeat="user in users_json_data" style="background-color: ; padding-top: 20px;"> -->
-          <script>
+         <!--  <script>
           
-            var access_token = window.location.search.substring(1);
+            var unsorted_url = window.location.pathname.split('machine_id=');
+            unsorted_url = unsorted_url[1].split('/access_token=');
+            // alert("WORKING")
+            console.log(unsorted_url)
+            var id = unsorted_url[0]
+            var access_token = unsorted_url[1]
+            var url =  '/api/machines/' + id + '/prefedRecipes?access_token=' + access_token
+            alert(url)
             // unsorted_url = unsorted_url[1].split('/access_token=');
             // access_token = unsorted_url[1]
             // 
-          </script>
+          </script> -->
           <div class="table-responsive">
             <table class="table table-striped table-hover" style="background-color: antiquewhite;
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
@@ -95,32 +106,40 @@
                 <th style="text-align: center;">Serial No.</th>
                 </div>
 
+                <div class="col-sm-2">
+                <th style="text-align: center;">Drink Name</th>
+                </div>
+
                 <div class="col-sm-1">
-                <th style="text-align: center;">Username</th>
+                <th style="text-align: center;">Flavour A</th>
                 </div>
 
-                <div class="col-sm-2">
-                <th style="text-align: center;">Name</th>
-                </div>
-
-                <div class="col-sm-2">
-                <th style="text-align: center;">Email ID</th>
-                </div>
-
-                <div class="col-sm-3">
-                <th style="text-align: center;">Address</th>
-                </div>
-
-                <div class="col-sm-2">
-                <th style="text-align: center;">Phone Number</th>
-                </div>
-
-                <!-- <div class="col-sm-1">
-                <th style="text-align: center;">Cart Value</th>
-                </div>
- -->
                 <div class="col-sm-1">
-                <th style="text-align: center;">Operation</th>
+                <th style="text-align: center;">Flavour B</th>
+                </div>
+
+                <div class="col-sm-1">
+                <th style="text-align: center;">Flavour C</th>
+                </div>
+
+                <div class="col-sm-1">
+                <th style="text-align: center;">Flavour D</th>
+                </div>
+
+                <div class="col-sm-1">
+                <th style="text-align: center;">Flavour E</th>
+                </div>
+
+                <div class="col-sm-1">
+                <th style="text-align: center;">Flavour F</th>
+                </div>
+
+                <div class="col-sm-1">
+                <th style="text-align: center;">Flavour G</th>
+                </div>
+
+                <div class="col-sm-1">
+                <th style="text-align: center;">Flavour H</th>
                 </div>
 
               </tr>
@@ -129,29 +148,16 @@
               
               <tr ng-repeat="user in users_json_data" style="text-align: center;">
                 <td>{{$index + 1}}.</td>
-                <td>{{user.username}}</td>
                 <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.address}}</td>
-                <td>{{user.phone_number}}</td>
-                <!-- <td>&#x20b9;  {{user.cart_value}}</td> -->
-                <td>
-                  <div class="col-md-12 row">
-                    
-                    <div class="col-md-4" style="padding-left: 0px;">
-                      <a href="/admin/edit_machine/machine_id={{user.id}}/" onclick = "location.href=this.href + access_token; return false" class="btn btn-info btn-lg" style="font-size: 14px;">Edit</a>
-                    </div>
-
-                    <div class="col-md-4" style="padding-left: 0px;">
-                      <a href="/admin/bottles/machine_id={{user.id}}/" onclick = "location.href=this.href + access_token; return false" class="btn btn-warning btn-lg" style="font-size: 14px;">Config</a>
-                    </div>
-
-                    <div class="col-md-4" >
-                      <a href="/admin/delete_machine/machine_id={{user.id}}/" onclick = "location.href=this.href + access_token; return false" class="btn btn-danger btn-lg" style="font-size: 14px;">Delete</a>
-                    </div>
-
-                  </div>
-                  </td>
+                <td>{{user.ingredient_name_1}} | {{user.quantity_1}} ml</td>
+                <td>{{user.ingredient_name_2}} | {{user.quantity_2}} ml</td>
+                <td>{{user.ingredient_name_3}} | {{user.quantity_3}} ml</td>
+                <td>{{user.ingredient_name_4}} | {{user.quantity_4}} ml</td>
+                <td>{{user.ingredient_name_5}} | {{user.quantity_5}} ml</td>
+                <td>{{user.ingredient_name_6}} | {{user.quantity_6}} ml</td>
+                <td>{{user.ingredient_name_7}} | {{user.quantity_7}} ml</td>
+                <td>{{user.ingredient_name_8}} | {{user.quantity_8}} ml</td>
+                
               </tr>
             </tbody>
           </table>

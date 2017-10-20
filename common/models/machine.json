@@ -30,6 +30,11 @@
       "type": "hasMany",
       "model": "bottle",
       "foreignKey": ""
+    },
+    "prefedRecipes": {
+      "type": "hasMany",
+      "model": "prefed_recipe",
+      "foreignKey": ""
     }
   },
   "acls": [
@@ -51,7 +56,6 @@
       "principalId": "$authenticated",
       "permission": "ALLOW"
     }
-    
   ],
   "methods": {}
 }

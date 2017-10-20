@@ -1,0 +1,115 @@
+<link rel="stylesheet" type="text/css" href="res/css/register_user/base.css"/>
+
+<script>
+  $(window).ready(function(){  
+  var access_token = window.location.search.substring(1);
+  var url = '/api/machines?' + access_token
+  alert("URL1")
+  alert(url)
+  $.ajax({ url: url ,
+          context: document.body,
+          success: function(response){
+             
+             document.getElementById("page_view").style.display = "block";
+             
+             
+          },
+          
+          error: function (response) {
+            alert("You are not authenticated to view this page")
+            setTimeout(function() { window.location.replace('/admin'); }, 0000)
+          },
+          cache: false,
+        });
+  });
+</script>
+
+<!-- <div ng-controller="add_gym_user_controller"> -->
+<div id="">
+<div ng-include src="'Views/admin/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+
+<div id="page_view" style="display: none">
+<div class="container " id="main_form" style="margin-top: 3%;" > 
+
+<!-- <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;"></iframe> -->
+  <div id="contact" style="margin-top: 0%; margin-bottom: 10%">
+    <h3>Add New Machine</h3>
+    <h4>Fill the User form below</h4>
+
+    
+    <form id = "myForm" action="" method="post" target="dummyframe">
+    <fieldset>
+      <input placeholder="Username" type="text" tabindex="1" required autofocus name="username" style="width: 100%; padding-left: 10px;">
+    </fieldset>
+    
+    <fieldset>
+      <input placeholder="Name" type="text" tabindex="2" required name="name">
+    </fieldset>
+    <fieldset>
+      <input placeholder="Address" type="text" tabindex="3" required name="address">
+    </fieldset>
+    <fieldset>
+      <input placeholder="Email" type="email" tabindex="4" required name="email">
+    </fieldset>
+    <fieldset>
+      <div class="row">
+      <div class="col-md-1 col-sm-1 col-xs-1" style="border: 1px solid #ccc; background: #f0f0f0; margin-left:15px; padding: 0.9%;">+91</div>
+      <div class="col-md-1 col-sm-1 col-xs-1" style="padding:0px;margin: 1%;margin-right: -15px;margin-left: 10px;">-</div>
+      <div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0px;width: 76%">
+      <input  placeholder="Phone Number" type="tel" pattern="[789][0-9]{9}" tabindex="5" required name="phone_number" style="width: 100%;">
+      </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="row">
+      <div class="col-md-1 col-sm-1 col-xs-1" style="border: 1px solid #ccc; background: #f0f0f0; margin-left:15px; padding: 0.9%;">+91</div>
+      <div class="col-md-1 col-sm-1 col-xs-1" style="padding:0px;margin: 1%;margin-right: -15px;margin-left: 10px;">-</div>
+      <div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0px;width: 76%">
+      <input  placeholder="Re Enter Phone Number" type="tel" pattern="[789][0-9]{9}" tabindex="6" required name="password" style="width: 100%;">
+      </div>
+      </div>
+    </fieldset>
+   
+    
+    <!-- <fieldset>
+      <input tabindex="8" name="machine_id" value = {{users_json_data.id}} type = "text" style="display: none;">
+    </fieldset> -->
+    
+      <button name="submit" type="submit" id="contact-submit">Submit</button>
+      <script>
+        var access_token = window.location.search.substring(1);
+         
+          
+          var url = '/api/machines?' + access_token
+      $('#myForm')
+      .ajaxForm({
+        url : url, // or whatever
+        dataType : 'json',
+        success : function (response) {
+            
+            
+            alert("New User Created")
+            console.log("response.id")
+            // console.log(JSON.stringify(response.id))
+            // console.log(response.id)
+            // console.log(response)
+            var reload_url = '/admin/add_bottles/motor_A/machine_id=' + response.id + '/' + access_token
+            // alert(reload_url)
+            
+            window.location.href = reload_url
+            
+        },
+        error: function (response) {
+      
+            alert("User Already Exists / Enter the Correct Details !")
+            window.location.reload();
+        },
+        cache: false,
+    });
+      </script>
+    
+</div>
+
+
+</div>
+</div>
