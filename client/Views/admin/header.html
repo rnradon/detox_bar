@@ -21,7 +21,7 @@ function closeNav() {
   <a class="anchor" href="" id="delete"> <i class="fa fa-trash" aria-hidden="true"></i></i> Delete Machine</a>
   <a class="anchor" href="" id="edit"><i class="fa fa-pencil" aria-hidden="true"></i></i> Edit Machine</a>
   <a class="anchor" href="" id="view"><i class="fa fa-book" aria-hidden="true"></i></i> View Machines</a>
-  <a class="anchor" href="" id="configure"><i class="fa fa-area-chart" aria-hidden="true"></i> Configure Machine</a>
+  <a class="anchor" href="" id="configure"><i class="fa fa-cogs" aria-hidden="true"></i> Configure Machine</a>
   <a class="anchor" href="" id="prefed"><i class="fa fa-coffee" aria-hidden="true"></i> Pre-Fed Recipes</a>
   <!-- <a class="anchor" href="" id="change_auth_password"><i class="fa fa-key" aria-hidden="true"></i> Change Password</a> -->
   <a class="anchor" href="" id="recipes"><i class="fa fa-beer" aria-hidden="true"></i> View Recipes</a>
@@ -29,6 +29,8 @@ function closeNav() {
   
   <!-- <a href="#">Clients</a>
   <a href="#">Contact</a> -->
+  <a class="anchor" href="" id="logo_home" style="bottom: 0; margin-top: 20%"><img src="../res/img/adelantos.jpg" style="bottom: 0; width: 70%; margin-top: 10%; border-radius: 20%"></a>
+  <small id="passwordHelpInline" class="text-muted" style="text-align: center;margin-left: 10%;">Copyright &#169; Adelantos Pvt. Ltd.</small>
 </div>
 
 <script>
@@ -37,14 +39,13 @@ var access_token = window.location.search.substring(1);
    $("#logout").click(function logout(){
     
     var url = '/logout?' + access_token
-    // alert("YES")
-    alert(url)
+   
     $.ajax({
             method: 'POST',
             url : '/api/users/logout?' + access_token, // or whatever
             dataType : 'json',
             success : function (response) {
-                alert("LOGOUT")
+              
                 // var app = angular.module('my_app', []);
                 // app.controller('myCtrl', function($scope, $http) {
                 //   $http.get('/api/gym_users/findOne?filter[where][registration_number]=' + reg_number + '&' + access_token)
@@ -80,6 +81,14 @@ var access_token = window.location.search.substring(1);
 
 
     $("#home").click(function home(){
+    // var access_token = window.location.search.substring(1);
+    var url = '/admin/view_machines?' + access_token
+    window.location.href = url;
+            
+    
+  });
+
+    $("#logo_home").click(function home(){
     // var access_token = window.location.search.substring(1);
     var url = '/admin/view_machines?' + access_token
     window.location.href = url;

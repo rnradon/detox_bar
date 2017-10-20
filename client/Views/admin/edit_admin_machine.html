@@ -17,8 +17,7 @@
   var machine_id = unsorted_url[0]
 
   var url = '/api/machines?' + access_token 
-  alert("URL1")
-  alert(url)
+  
 
         $.ajax({ 
                 // url: '/api/gym_users?' + access_token ,
@@ -99,7 +98,7 @@
     var id = unsorted_url[0]
     var access_token = unsorted_url[1]
     var url =  '/api/machines/' + id + '?' + 'access_token=' + access_token
-    alert(url)
+  
 
          $('#myForm')
         .ajaxForm({
@@ -120,7 +119,7 @@
                 window.location.href = url; //CHANGE THIS TO VIEW USER CARD
             },
             error: function (response) {
-              alert("ERROR")
+              alert("Invalid Request")
                 // alert(response)
                 console.log(response)
                 // setTimeout(function() { window.location.reload(true); }, 2000)

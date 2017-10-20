@@ -9,8 +9,7 @@
   var machine_id = unsorted_url[0]
 
   var url = '/api/machines?' + access_token 
-  alert("URL1")
-  alert(url)
+  
 
   $.ajax({ url: url ,
           context: document.body,
@@ -76,8 +75,7 @@
         var id = unsorted_url[0]
         var access_token = unsorted_url[1]
         var url =  '/api/machines/' + id + '/bottles?' + 'access_token=' + access_token
-        alert("url")
-        alert(url)
+        
       $('#myForm')
       .ajaxForm({
         url : url, // or whatever

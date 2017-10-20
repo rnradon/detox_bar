@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="res/css/register_user/base.css"/>
 
 <div id=" ">
-<div ng-include src="'Views/admin/header.html'" style="padding-top: 20px; padding-left: 20px;"></div>
+<div ng-include src="'Views/admin/header_with_machine_and_bottle_id.html'" style="padding-top: 20px; padding-left: 20px;"></div>
 
 <script>
    $(window).ready(function(){  
@@ -38,7 +38,7 @@
                 error: function (response) {
                   
                   alert("You are not authenticated to view this page")
-                  setTimeout(function() { window.location.replace('/'); }, 0000)
+                  setTimeout(function() { window.location.replace('/admin'); }, 0000)
                 },
                 cache: false,
               });
@@ -106,7 +106,7 @@
 
       $(".edit").click(function(event){
         
-        alert("EDIT")
+        // alert("EDIT")
         var unsorted_url = window.location.pathname.split('machine_id=');
        
         var semisorted_url = unsorted_url[1].split('/bottle_id=')

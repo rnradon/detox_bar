@@ -34,18 +34,27 @@ function closeNav() {
 </div>
 
 <script>
-    var unsorted_url = window.location.pathname.split('machine_id=');
-    unsorted_url = unsorted_url[1].split('/access_token=');
-    console.log(unsorted_url)
-    var access_token = unsorted_url[1]
-    access_token = 'access_token=' + access_token
-    console.log("access_token " + access_token)
+     var unsorted_url = window.location.pathname.split('machine_id=');
+   
+    var semisorted_url = unsorted_url[1].split('/bottle_id=')
+    var machine_id = semisorted_url[0]
+   
+     
+    var userId_url = semisorted_url[1].split('/access_token=');
+   
+
+    var userId = userId_url[0]
+    
+
+    access_token = "access_token=" + userId_url[1]
+
+  
    
 
    $("#logout").click(function logout(){
     
     var url = '/logout?' + access_token
-   
+    
     $.ajax({
             method: 'POST',
             url : '/api/users/logout?' + access_token, // or whatever
@@ -94,6 +103,7 @@ function closeNav() {
     
   });
 
+
   $("#logo_home").click(function home(){
     // var access_token = window.location.search.substring(1);
     var url = '/admin/view_machines?' + access_token
@@ -101,7 +111,6 @@ function closeNav() {
             
     
   });
-
 
   $("#add").click(function logout(){
     // var access_token = window.location.search.substring(1);

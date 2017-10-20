@@ -55,21 +55,27 @@
    
     <form id = "myForm" action="" method="put" target="dummyframe">
     <fieldset>
+      Registration ID :
       <input id="registration_number" type="number" tabindex="1" name="registration_number" required value={{users_json_data.registration_number}}  style="width: 100%; padding-left: 10px;">
     </fieldset>
     <fieldset>
+      Name :
       <input placeholder="Name" type="text" tabindex="3" value={{users_json_data.name}} required name="name">
     </fieldset>
     <fieldset>
+      Address :
       <input placeholder="Address" type="text" tabindex="4" value={{users_json_data.address}} required name="address">
     </fieldset>
     <fieldset>
+      Email :
       <input placeholder="Email" type="email" tabindex="5" value={{users_json_data.email}} required name="email">
     </fieldset>
     <fieldset>
+      Cart Value :
       <input placeholder="Cart Value" type="number" tabindex="6" value={{users_json_data.cart_value}} required name="cart_value" style="width:100%; padding-left: 10px">
     </fieldset>
     <fieldset>
+      Phone Number :
       <div class="row">
       <div class="col-md-1 col-sm-1 col-xs-1" style="border: 1px solid #ccc; background: #f0f0f0; margin-left:15px; padding: 0.9%;">+91</div>
       <div class="col-md-1 col-sm-1 col-xs-1" style="padding:0px;margin: 1%;margin-right: -15px;margin-left: 10px;">-</div>

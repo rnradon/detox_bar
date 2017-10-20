@@ -4,7 +4,7 @@
     app.config(function($routeProvider, $locationProvider, $httpProvider) {
        
         $routeProvider
-
+            //------------------------------------------ADMIN----------------------------------------------
             .when("/admin", {
                 templateUrl : "Views/admin/login.html",
             })
@@ -121,7 +121,7 @@
                 controller: 'view_prefed_recipes_controller'
             })
 
-
+             //========================================================================================
            
 
 
@@ -134,7 +134,7 @@
 
 
 
-            //MACHINE USER
+            //-------------------------------------MACHINE USER--------------------------------------------
             .when("/", {
                 templateUrl : "Views/machine/login.html",
             })
@@ -208,7 +208,7 @@
                 controller: 'search_user_controller'
             })
 
-           
+           //========================================================================================
 
         $locationProvider.html5Mode(true);
 
@@ -246,12 +246,12 @@
 
         $http.get('/api/machines/count?access_token=' + access_token).then(
             function(success) {
-                alert("SUCC")
-                console.log('RESPONSE', success);
+                // alert("SUCC")
+                // console.log('RESPONSE', success);
                  $scope.count = success.data;
             }, function(error) {
-                alert("ERROR in count")
-                console.log('ERROR', error);
+                // alert("ERROR in count")
+                // console.log('ERROR', error);
             });
 
 
@@ -264,8 +264,8 @@
         var access_token = $routeParams.access_token
         // var userId = $routeParams.userId
         var url = '/api/machines/' + machineId + '?' + access_token
-        alert('url')
-        alert(url)
+        // alert('url')
+        // alert(url)
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -281,8 +281,8 @@
         var access_token = $routeParams.access_token
         // var userId = $routeParams.userId
         var url = '/api/machines/' + machineId + '?' + access_token
-        alert('url')
-        alert(url)
+        // alert('url')
+        // alert(url)
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -296,7 +296,7 @@
         var id = $routeParams.id
         var access_token = $routeParams.access_token
         var url = '/api/machines/' + id + '/prefedRecipes?' + access_token
-        alert(url)
+        // alert(url)
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });
@@ -403,7 +403,7 @@
         var id = $routeParams.id
         var access_token = $routeParams.access_token
         var url = '/api/machines/' + id + '/bottles?' + access_token
-        alert(url)
+        // alert(url)
         $http.get(url).then(function(response) {
         $scope.users_json_data = response.data;
             });

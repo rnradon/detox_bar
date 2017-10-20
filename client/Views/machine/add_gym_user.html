@@ -37,29 +37,30 @@
     <h3>Gym User Registration</h3>
     <h4>Fill the User form below</h4>
 
-    <script>
-        $("#back_to_admin_landing_page").click(function back_to_admin_landing_page(){
-          
-        });
-    </script>
-    <a href="" id="back_to_admin_landing_page"><button name="submit" type="submit" id="contact-submit" style="background-color: #4c96af; margin-bottom: 3%">Back</button></a>
+   
     <form id = "myForm" action="/api/gym_users" method="post" target="dummyframe">
     <fieldset>
-      <input placeholder="Registration Number" type="number" tabindex="1" required autofocus name="registration_number" style="width: 100%; padding-left: 10px;">
+      Registration ID : 
+      <input placeholder="Registration ID" type="text" tabindex="1" required autofocus name="registration_number" style="width: 100%; padding-left: 10px;">
     </fieldset>
     <fieldset>
-      <input placeholder="Re Enter Registration Number" type="number" tabindex="2" required name="username" style="width: 100%; padding-left: 10px; ">
+      Re- Enter Registration ID :
+      <input placeholder="Re Enter Registration ID" type="number" tabindex="2" required name="username" style="width: 100%; padding-left: 10px; ">
     </fieldset>
     <fieldset>
+      Name :
       <input placeholder="Name" type="text" tabindex="3" required name="name">
     </fieldset>
     <fieldset>
+      Address :
       <input placeholder="Address" type="text" tabindex="4" required name="address">
     </fieldset>
     <fieldset>
+      Email : 
       <input placeholder="Email" type="email" tabindex="5" required name="email">
     </fieldset>
     <fieldset>
+      Phone Number :
       <div class="row">
       <div class="col-md-1 col-sm-1 col-xs-1" style="border: 1px solid #ccc; background: #f0f0f0; margin-left:15px; padding: 0.9%;">+91</div>
       <div class="col-md-1 col-sm-1 col-xs-1" style="padding:0px;margin: 1%;margin-right: -15px;margin-left: 10px;">-</div>
@@ -69,6 +70,7 @@
       </div>
     </fieldset>
     <fieldset>
+       Re-Enter Phone Number :
       <div class="row">
       <div class="col-md-1 col-sm-1 col-xs-1" style="border: 1px solid #ccc; background: #f0f0f0; margin-left:15px; padding: 0.9%;">+91</div>
       <div class="col-md-1 col-sm-1 col-xs-1" style="padding:0px;margin: 1%;margin-right: -15px;margin-left: 10px;">-</div>
@@ -78,7 +80,8 @@
       </div>
     </fieldset>
     <fieldset>
-      <input tabindex="8" required name="cart_value" type = "number">
+      Cart Value
+      <input tabindex="8" required name="cart_value" type = "number" style="width: 100%">
     </fieldset>
     
     <!-- <fieldset>
