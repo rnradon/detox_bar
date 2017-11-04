@@ -23,6 +23,10 @@
       "type": "number",
       "required": true
     },
+    "cost_per_ml_1": {
+      "type": "number",
+      "required": true
+    },
     "ingredient_name_2": {
       "type": "string",
       "required": true
@@ -32,6 +36,10 @@
       "required": true
     },
     "quantity_2": {
+      "type": "number",
+      "required": true
+    },
+    "cost_per_ml_2": {
       "type": "number",
       "required": true
     },
@@ -47,6 +55,10 @@
       "type": "number",
       "required": true
     },
+    "cost_per_ml_3": {
+      "type": "number",
+      "required": true
+    },
     "ingredient_name_4": {
       "type": "string",
       "required": true
@@ -56,6 +68,10 @@
       "required": true
     },
     "quantity_4": {
+      "type": "number",
+      "required": true
+    },
+    "cost_per_ml_4": {
       "type": "number",
       "required": true
     },
@@ -71,6 +87,10 @@
       "type": "number",
       "required": true
     },
+    "cost_per_ml_5": {
+      "type": "number",
+      "required": true
+    },
     "ingredient_name_6": {
       "type": "string",
       "required": true
@@ -80,6 +100,10 @@
       "required": true
     },
     "quantity_6": {
+      "type": "number",
+      "required": true
+    },
+    "cost_per_ml_6": {
       "type": "number",
       "required": true
     },
@@ -95,6 +119,10 @@
       "type": "number",
       "required": true
     },
+    "cost_per_ml_7": {
+      "type": "number",
+      "required": true
+    },
     "ingredient_name_8": {
       "type": "string",
       "required": true
@@ -104,6 +132,10 @@
       "required": true
     },
     "quantity_8": {
+      "type": "number",
+      "required": true
+    },
+    "cost_per_ml_8": {
       "type": "number",
       "required": true
     }

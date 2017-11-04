@@ -55,11 +55,11 @@
     <div class="col-md-3 col-xs-12 col-lg-3 col-sm-12" id="div1" ng-repeat="user in users_json_data" style="background-color: ; margin-top: 10%;">
       <!-- <a href="/admin/bottles/machine_id={{user.machineId}}/bottle_id={{user.id}}/" onclick = "location.href=this.href + access_token; return false;" class="anchor" style="text-decoration: none; color:#333"> -->
 
-      <div class="col-md-4 categoryWrap" style = "display:flex; align-items:center; flex-direction:column;height:300px">
+      <div class="col-md-4 categoryWrap" style = "display:flex; align-items:center; flex-direction:column;height:320px">
         <div class="row">
           <div style="height: 80px;">
           <input type="text" name="ingredient_name_{{$index + 1}}" value="{{user.ingredient_name}}" style="display: none;">
-          <h3>Flavour: {{user.ingredient_name}}</h3>
+          <h3>Flavour : {{user.ingredient_name}}</h3>
           </div>
 
       <div class="catContent" style = "align-items:center">
@@ -67,6 +67,13 @@
           <input type="number" name="quantity_{{$index + 1}}" value="0" max="999" style="align-items: center;text-align: center;">
           
         <hr>
+         <div>
+          <input type="text" name="cost_per_ml_{{$index + 1}}" value="{{user.cost_per_ml}}" style="display: none;">
+          
+          <p style = "text-align:center">Cost per ml : &#8377; {{user.cost_per_ml}}
+          </p>
+          
+        </div>
         <div style="margin-bottom: 10px;">
           <input type="text" name="bottle_name_{{$index + 1}}" value="{{user.bottle_name}}" style="display: none;">
           
