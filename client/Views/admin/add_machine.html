@@ -4,8 +4,8 @@
   $(window).ready(function(){  
   var access_token = window.location.search.substring(1);
   var url = '/api/machines?' + access_token
-  alert("URL1")
-  alert(url)
+  // alert("URL1")
+  // alert(url)
   $.ajax({ url: url ,
           context: document.body,
           success: function(response){
